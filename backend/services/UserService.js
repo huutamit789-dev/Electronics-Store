@@ -3,9 +3,7 @@
 const UserRepository = require('../repositories/UserRepository')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-
-const SALT_ROUNDS = 10
-const JWT_EXPIRES_IN = '1d'
+const config = require('../config/config')
 
 class UserService {
   // Get all users
@@ -62,12 +60,6 @@ class UserService {
       throw error
     }
 
-    if (!process.env.JWT_SECRET) {
-      const error = new Error('JWT_SECRET is not defined in .env')
-      error.status = 500
-      throw error
-    }
-
     const user = await UserRepository.findByEmail(email)
     if (!user) {
       const error = new Error('User not found')
@@ -87,8 +79,11 @@ class UserService {
       email: user.email
     }
 
-    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: JWT_EXPIRES_IN })
-
+    const token = jwt.sign(
+      payload, 
+      config.JWT_SECRET,
+      { expiresIn: config.JWT_EXPIRES_IN } 
+    )
     return {
       token,
       user: {
