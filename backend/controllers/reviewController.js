@@ -1,30 +1,23 @@
 // Review Controller
-// Handles product review operations
-const Review = require('../models/Review')
+// Handles HTTP requests and responses for review operations
+// Delegates business logic to ReviewService
+const ReviewService = require('../services/ReviewService')
 
-async function getReviews(req, res) {
+async function getReviews(req, res, next) {
   try {
-    const reviews = await Review.find().populate('product_id').populate('user_id').lean()
+    const reviews = await ReviewService.getAllReviews()
     res.json(reviews)
   } catch (err) {
-    console.error('❌ Fetch reviews error:', err)
-    res.status(500).json({ error: 'Could not fetch reviews' })
+    next(err)
   }
 }
 
-async function createReview(req, res) {
+async function createReview(req, res, next) {
   try {
-    const { product_id, user_id, rating, comment } = req.body
-    if (!product_id || !user_id || !rating) {
-      return res.status(400).json({ error: 'product_id, user_id, and rating are required' })
-    }
-
-    const newReview = new Review({ product_id, user_id, rating, comment })
-    await newReview.save()
+    const newReview = await ReviewService.createReview(req.body)
     res.status(201).json(newReview)
   } catch (err) {
-    console.error('❌ Create review error:', err)
-    res.status(500).json({ error: 'Could not create review' })
+    next(err)
   }
 }
 
