@@ -13,6 +13,8 @@ const cartRoutes = require('./routes/cartRoutes')
 const paymentRoutes = require('./routes/paymentRoutes')
 const reviewRoutes = require('./routes/reviewRoutes')
 const orderHistoryRoutes = require('./routes/orderHistoryRoutes')
+const { responseHandler } = require('./middleware/responseHandler')
+const { notFoundHandler } = require('./middleware/notFoundHandler')
 const { errorHandler } = require('./middleware/errorHandler')
 require('dotenv').config()
 
@@ -22,10 +24,11 @@ const app = express()
 // Middleware
 app.use(cors())
 app.use(express.json())
+app.use(responseHandler)
 
 // Health check route
 app.get('/', (req, res) => {
-  res.json({ status: 'ok', message: 'Backend API is running' })
+  res.success({ status: 'ok' }, 'Backend API is running')
 })
 
 // Swagger docs route
@@ -40,6 +43,9 @@ app.use('/cart', cartRoutes)
 app.use('/payments', paymentRoutes)
 app.use('/reviews', reviewRoutes)
 app.use('/order-history', orderHistoryRoutes)
+
+// Handle unknown routes before the centralized error handler
+app.use(notFoundHandler)
 
 // Error handling middleware
 app.use(errorHandler)

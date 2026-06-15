@@ -1,24 +1,24 @@
-// OrderHistory Controller
-// Handles HTTP requests and responses for order history operations
-// Delegates business logic to OrderHistoryService
 const OrderHistoryService = require('../services/OrderHistoryService')
+const { asyncHandler } = require('../middleware/asyncHandler')
 
-async function getOrderHistory(req, res, next) {
-  try {
-    const history = await OrderHistoryService.getAllOrderHistory()
-    res.json(history)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Get all order history entries.
+ * @route GET /order-history
+ * @access Public
+ */
+const getOrderHistory = asyncHandler(async (req, res) => {
+  const history = await OrderHistoryService.getAllOrderHistory()
+  res.success(history, 'Order history returned successfully')
+})
 
-async function addOrderHistory(req, res, next) {
-  try {
-    const newHistory = await OrderHistoryService.addOrderHistory(req.body)
-    res.status(201).json(newHistory)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Add a new order history entry.
+ * @route POST /order-history
+ * @access Public
+ */
+const addOrderHistory = asyncHandler(async (req, res) => {
+  const newHistory = await OrderHistoryService.addOrderHistory(req.body)
+  res.success(newHistory, 'Order history created successfully', 201)
+})
 
 module.exports = { getOrderHistory, addOrderHistory }

@@ -2,11 +2,12 @@
 // This file maps HTTP paths to controller functions.
 const express = require('express')
 const { getUsers, createUser, loginUser } = require('../controllers/userController')
+const { authMiddleware } = require('../middleware/authMiddleware')
 
 const router = express.Router()
 
 // GET /users -> list all users (without password hashes)
-router.get('/', getUsers)
+router.get('/', authMiddleware, getUsers)
 
 // POST /users -> create a new user with hashed password
 router.post('/', createUser)

@@ -38,6 +38,7 @@ function errorHandler(err, req, res, next) {
   const errorType = getErrorType(statusCode)
 
   res.status(statusCode).json({
+    success: false,
     statusCode,
     errorType,
     message: err.message || 'Internal Server Error'

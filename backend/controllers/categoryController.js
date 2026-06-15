@@ -1,24 +1,24 @@
-// Category Controller
-// Handles HTTP requests and responses for category operations
-// Delegates business logic to CategoryService
 const CategoryService = require('../services/CategoryService')
+const { asyncHandler } = require('../middleware/asyncHandler')
 
-async function getCategories(req, res, next) {
-  try {
-    const categories = await CategoryService.getAllCategories()
-    res.json(categories)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Get all product categories.
+ * @route GET /categories
+ * @access Public
+ */
+const getCategories = asyncHandler(async (req, res) => {
+  const categories = await CategoryService.getAllCategories()
+  res.success(categories, 'Categories returned successfully')
+})
 
-async function createCategory(req, res, next) {
-  try {
-    const newCategory = await CategoryService.createCategory(req.body)
-    res.status(201).json(newCategory)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Create a new product category.
+ * @route POST /categories
+ * @access Public
+ */
+const createCategory = asyncHandler(async (req, res) => {
+  const newCategory = await CategoryService.createCategory(req.body)
+  res.success(newCategory, 'Category created successfully', 201)
+})
 
 module.exports = { getCategories, createCategory }

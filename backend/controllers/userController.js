@@ -1,34 +1,35 @@
-// User Controller
-// Handles HTTP requests and responses for user operations
-// Delegates business logic to UserService
 const UserService = require('../services/UserService')
+const { asyncHandler } = require('../middleware/asyncHandler')
 
-async function getUsers(req, res, next) {
-  try {
-    const users = await UserService.getAllUsers()
-    res.json(users)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Get all users without password hashes.
+ * @route GET /users
+ * @access Public
+ */
+const getUsers = asyncHandler(async (req, res) => {
+  const users = await UserService.getAllUsers()
+  res.success(users, 'Users returned successfully')
+})
 
-async function createUser(req, res, next) {
-  try {
-    const result = await UserService.createUser(req.body)
-    res.status(201).json(result)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Create a new user account.
+ * @route POST /users
+ * @access Public
+ */
+const createUser = asyncHandler(async (req, res) => {
+  const result = await UserService.createUser(req.body)
+  res.success(result, 'User created successfully', 201)
+})
 
-async function loginUser(req, res, next) {
-  try {
-    const { email, password } = req.body
-    const result = await UserService.verifyPassword(email, password)
-    res.json(result)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Login with email and password, then return a JWT.
+ * @route POST /users/login
+ * @access Public
+ */
+const loginUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body
+  const result = await UserService.verifyPassword(email, password)
+  res.success(result, 'Login successful')
+})
 
 module.exports = { getUsers, createUser, loginUser }

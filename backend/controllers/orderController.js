@@ -1,35 +1,47 @@
-// Order Controller
-// Handles HTTP requests and responses for order operations
-// Delegates business logic to OrderService
 const OrderService = require('../services/OrderService')
+const { asyncHandler } = require('../middleware/asyncHandler')
 
-async function getOrders(req, res, next) {
-  try {
-    const orders = await OrderService.getAllOrders()
-    res.json(orders)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Get all orders with user and product data.
+ * @route GET /orders
+ * @access Public
+ */
+const getOrders = asyncHandler(async (req, res) => {
+  const orders = await OrderService.getAllOrders()
+  res.success(orders, 'Orders returned successfully')
+})
 
-async function createOrder(req, res, next) {
-  try {
-    const newOrder = await OrderService.createOrder(req.body)
-    res.status(201).json(newOrder)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Get order detail by ID.
+ * @route GET /orders/:id
+ * @access Public
+ */
+const getOrderById = asyncHandler(async (req, res) => {
+  const { id } = req.params
+  const order = await OrderService.getOrderById(id)
+  res.success(order, 'Order returned successfully')
+})
 
-async function updateOrderStatus(req, res, next) {
-  try {
-    const { id } = req.params
-    const { status } = req.body
-    const updated = await OrderService.updateOrderStatus(id, status)
-    res.json(updated)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Create a new order.
+ * @route POST /orders
+ * @access Public
+ */
+const createOrder = asyncHandler(async (req, res) => {
+  const newOrder = await OrderService.createOrder(req.body)
+  res.success(newOrder, 'Order created successfully', 201)
+})
 
-module.exports = { getOrders, createOrder, updateOrderStatus }
+/**
+ * @desc Update an order status by order ID.
+ * @route PUT /orders/:id/status
+ * @access Public
+ */
+const updateOrderStatus = asyncHandler(async (req, res) => {
+  const { id } = req.params
+  const { status } = req.body
+  const updated = await OrderService.updateOrderStatus(id, status)
+  res.success(updated, 'Order status updated successfully')
+})
+
+module.exports = { getOrders, getOrderById, createOrder, updateOrderStatus }

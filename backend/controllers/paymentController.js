@@ -1,24 +1,24 @@
-// Payment Controller
-// Handles HTTP requests and responses for payment operations
-// Delegates business logic to PaymentService
 const PaymentService = require('../services/PaymentService')
+const { asyncHandler } = require('../middleware/asyncHandler')
 
-async function getPayments(req, res, next) {
-  try {
-    const payments = await PaymentService.getAllPayments()
-    res.json(payments)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Get all payment records.
+ * @route GET /payments
+ * @access Public
+ */
+const getPayments = asyncHandler(async (req, res) => {
+  const payments = await PaymentService.getAllPayments()
+  res.success(payments, 'Payments returned successfully')
+})
 
-async function createPayment(req, res, next) {
-  try {
-    const newPayment = await PaymentService.createPayment(req.body)
-    res.status(201).json(newPayment)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Create a new payment record for an order.
+ * @route POST /payments
+ * @access Public
+ */
+const createPayment = asyncHandler(async (req, res) => {
+  const newPayment = await PaymentService.createPayment(req.body)
+  res.success(newPayment, 'Payment created successfully', 201)
+})
 
 module.exports = { getPayments, createPayment }

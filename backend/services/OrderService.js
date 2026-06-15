@@ -10,6 +10,24 @@ class OrderService {
     return await OrderRepository.findAll()
   }
 
+  // Get order by ID
+  async getOrderById(id) {
+    if (!id) {
+      const error = new Error('Order ID is required')
+      error.status = 400
+      throw error
+    }
+
+    const order = await OrderRepository.findById(id)
+    if (!order) {
+      const error = new Error('Order not found')
+      error.status = 404
+      throw error
+    }
+
+    return order
+  }
+
   // Create a new order
   async createOrder(orderData) {
     const { user_id, items, total_price } = orderData

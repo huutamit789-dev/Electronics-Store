@@ -5,7 +5,7 @@ const Review = require('../models/Review')
 class ReviewRepository {
   // Find all reviews
   async findAll() {
-    return await Review.find().populate('user_id').populate('product_id').lean()
+    return await Review.find().populate('user_id', '-password').populate('product_id').lean()
   }
 
   // Create a new review

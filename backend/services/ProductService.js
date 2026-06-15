@@ -8,6 +8,24 @@ class ProductService {
     return await ProductRepository.findAll()
   }
 
+  // Get product by ID
+  async getProductById(id) {
+    if (!id) {
+      const error = new Error('Product ID is required')
+      error.status = 400
+      throw error
+    }
+
+    const product = await ProductRepository.findById(id)
+    if (!product) {
+      const error = new Error('Product not found')
+      error.status = 404
+      throw error
+    }
+
+    return product
+  }
+
   // Create a new product
   async createProduct(productData) {
     const { name, price, category_id } = productData
