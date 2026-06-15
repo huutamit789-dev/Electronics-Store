@@ -1,30 +1,23 @@
 // Category Controller
-// Handles category-related CRUD operations
-const Category = require('../models/Category')
+// Handles HTTP requests and responses for category operations
+// Delegates business logic to CategoryService
+const CategoryService = require('../services/CategoryService')
 
-async function getCategories(req, res) {
+async function getCategories(req, res, next) {
   try {
-    const categories = await Category.find().lean()
+    const categories = await CategoryService.getAllCategories()
     res.json(categories)
   } catch (err) {
-    console.error('❌ Fetch categories error:', err)
-    res.status(500).json({ error: 'Could not fetch categories' })
+    next(err)
   }
 }
 
-async function createCategory(req, res) {
+async function createCategory(req, res, next) {
   try {
-    const { name, description } = req.body
-    if (!name) {
-      return res.status(400).json({ error: 'name is required' })
-    }
-
-    const newCategory = new Category({ name, description })
-    await newCategory.save()
+    const newCategory = await CategoryService.createCategory(req.body)
     res.status(201).json(newCategory)
   } catch (err) {
-    console.error('❌ Create category error:', err)
-    res.status(500).json({ error: 'Could not create category' })
+    next(err)
   }
 }
 

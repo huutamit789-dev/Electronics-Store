@@ -1,35 +1,23 @@
 // OrderHistory Controller
-// Handles order history tracking
-const OrderHistory = require('../models/OrderHistory')
+// Handles HTTP requests and responses for order history operations
+// Delegates business logic to OrderHistoryService
+const OrderHistoryService = require('../services/OrderHistoryService')
 
-async function getOrderHistory(req, res) {
+async function getOrderHistory(req, res, next) {
   try {
-    const { user_id } = req.query
-    if (!user_id) {
-      return res.status(400).json({ error: 'user_id is required' })
-    }
-
-    const history = await OrderHistory.find({ user_id }).lean()
+    const history = await OrderHistoryService.getAllOrderHistory()
     res.json(history)
   } catch (err) {
-    console.error('❌ Fetch order history error:', err)
-    res.status(500).json({ error: 'Could not fetch order history' })
+    next(err)
   }
 }
 
-async function addOrderHistory(req, res) {
+async function addOrderHistory(req, res, next) {
   try {
-    const { user_id, order_id, action } = req.body
-    if (!user_id || !order_id || !action) {
-      return res.status(400).json({ error: 'user_id, order_id, and action are required' })
-    }
-
-    const newHistory = new OrderHistory({ user_id, order_id, action })
-    await newHistory.save()
+    const newHistory = await OrderHistoryService.addOrderHistory(req.body)
     res.status(201).json(newHistory)
   } catch (err) {
-    console.error('❌ Add order history error:', err)
-    res.status(500).json({ error: 'Could not add order history' })
+    next(err)
   }
 }
 
