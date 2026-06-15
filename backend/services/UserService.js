@@ -31,7 +31,7 @@ class UserService {
     }
 
     // Hash password
-    const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS)
+  const hashedPassword = await bcrypt.hash(password, config.SALT_ROUNDS || 10);
 
     // Create user
     const newUser = await UserRepository.create({
