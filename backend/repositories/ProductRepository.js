@@ -1,6 +1,6 @@
 // Product Repository
 // Handles all database operations for product data
-const Product = require('../models/Product')
+const Product = require('../models/ProductModel')
 
 class ProductRepository {
   // Find all products

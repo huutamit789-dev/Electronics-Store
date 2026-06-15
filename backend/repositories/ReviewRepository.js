@@ -1,6 +1,6 @@
 // Review Repository
 // Handles all database operations for review data
-const Review = require('../models/Review')
+const Review = require('../models/ReviewModel')
 
 class ReviewRepository {
   // Find all reviews

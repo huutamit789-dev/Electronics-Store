@@ -1,6 +1,6 @@
 // OrderHistory Repository
 // Handles all database operations for order history data
-const OrderHistory = require('../models/OrderHistory')
+const OrderHistory = require('../models/OrderHistoryModel')
 
 class OrderHistoryRepository {
   // Find all order history entries

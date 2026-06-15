@@ -1,6 +1,6 @@
 // Cart Repository
 // Handles all database operations for cart data
-const Cart = require('../models/Cart')
+const Cart = require('../models/CartModel')
 
 class CartRepository {
   // Find cart by user_id

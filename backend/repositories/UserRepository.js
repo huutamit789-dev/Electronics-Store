@@ -1,6 +1,6 @@
 // User Repository
 // Handles all database operations for user data
-const User = require('../models/User')
+const User = require('../models/UserModel')
 
 class UserRepository {
   // Find all users (exclude password)

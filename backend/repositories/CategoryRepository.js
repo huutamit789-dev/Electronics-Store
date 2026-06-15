@@ -1,6 +1,6 @@
 // Category Repository
 // Handles all database operations for category data
-const Category = require('../models/Category')
+const Category = require('../models/CartModel')
 
 class CategoryRepository {
   // Find all categories

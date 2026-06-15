@@ -1,6 +1,6 @@
 // Payment Repository
 // Handles all database operations for payment data
-const Payment = require('../models/Payment')
+const Payment = require('../models/PaymentModel')
 
 class PaymentRepository {
   // Find all payments

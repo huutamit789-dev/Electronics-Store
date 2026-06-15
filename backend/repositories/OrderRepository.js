@@ -1,6 +1,6 @@
 // Order Repository
 // Handles all database operations for order data
-const Order = require('../models/Order')
+const Order = require('../models/OrderModel')
 
 class OrderRepository {
   // Find all orders

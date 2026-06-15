@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
-const User = require('../models/User')
+const User = require('../models/UserModel')
 
+// Middleware xác thực token
 async function authMiddleware(req, res, next) {
   try {
     const authHeader = req.headers.authorization || ''
@@ -12,13 +13,9 @@ async function authMiddleware(req, res, next) {
       throw error
     }
 
-    if (!process.env.JWT_SECRET) {
-      const error = new Error('JWT_SECRET is not defined in .env')
-      error.status = 500
-      throw error
-    }
-
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    
+    // Tìm user và gắn thêm thông tin role để middleware sau sử dụng
     const user = await User.findById(decoded.id, { password: 0 }).lean()
 
     if (!user) {
@@ -27,7 +24,7 @@ async function authMiddleware(req, res, next) {
       throw error
     }
 
-    req.user = user
+    req.user = user // Gắn user vào request
     next()
   } catch (err) {
     if (err.name === 'JsonWebTokenError' || err.name === 'TokenExpiredError') {
@@ -37,4 +34,13 @@ async function authMiddleware(req, res, next) {
   }
 }
 
-module.exports = { authMiddleware }
+// Middleware kiểm tra quyền admin
+const adminMiddleware = (req, res, next) => {
+  if (req.user && req.user.role === 'admin') {
+    next()
+  } else {
+    res.status(403).json({ message: 'Access denied: Admins only' })
+  }
+}
+
+module.exports = { authMiddleware, adminMiddleware }
