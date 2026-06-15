@@ -1,52 +1,43 @@
 // Product Controller
-// Handles product-related CRUD operations
-const Product = require('../models/Product')
+// Handles HTTP requests and responses for product operations
+// Delegates business logic to ProductService
+const ProductService = require('../services/ProductService')
 
-async function getProducts(req, res) {
+async function getProducts(req, res, next) {
   try {
-    const products = await Product.find().populate('category_id').lean()
+    const products = await ProductService.getAllProducts()
     res.json(products)
   } catch (err) {
-    console.error('❌ Fetch products error:', err)
-    res.status(500).json({ error: 'Could not fetch products' })
+    next(err)
   }
 }
 
-async function createProduct(req, res) {
+async function createProduct(req, res, next) {
   try {
-    const { name, description, price, stock_quantity, image_url, category_id } = req.body
-    if (!name || !price || !category_id) {
-      return res.status(400).json({ error: 'name, price, and category_id are required' })
-    }
-
-    const newProduct = new Product({ name, description, price, stock_quantity, image_url, category_id })
-    await newProduct.save()
+    const newProduct = await ProductService.createProduct(req.body)
     res.status(201).json(newProduct)
   } catch (err) {
-    console.error('❌ Create product error:', err)
-    res.status(500).json({ error: 'Could not create product' })
+    next(err)
   }
 }
 
-async function updateProduct(req, res) {
+async function updateProduct(req, res, next) {
   try {
     const { id } = req.params
-    const updated = await Product.findByIdAndUpdate(id, req.body, { new: true })
+    const updated = await ProductService.updateProduct(id, req.body)
     res.json(updated)
   } catch (err) {
-    console.error('❌ Update product error:', err)
-    res.status(500).json({ error: 'Could not update product' })
+    next(err)
   }
 }
 
-async function deleteProduct(req, res) {
+async function deleteProduct(req, res, next) {
   try {
     const { id } = req.params
-    await Product.findByIdAndDelete(id)
+    await ProductService.deleteProduct(id)
     res.json({ message: 'Product deleted' })
   } catch (err) {
-    console.error('❌ Delete product error:', err)
-    res.status(500).json({ error: 'Could not delete product' })
+    next(err)
   }
 }
 

@@ -1,31 +1,24 @@
 // Payment Controller
-// Handles payment operations
-const Payment = require('../models/Payment')
+// Handles HTTP requests and responses for payment operations
+// Delegates business logic to PaymentService
+const PaymentService = require('../services/PaymentService')
 
-async function createPayment(req, res) {
+async function getPayments(req, res, next) {
   try {
-    const { order_id, user_id, amount, payment_method, status } = req.body
-    if (!order_id || !user_id || !amount || !payment_method) {
-      return res.status(400).json({ error: 'order_id, user_id, amount, and payment_method are required' })
-    }
-
-    const newPayment = new Payment({ order_id, user_id, amount, payment_method, status: status || 'pending' })
-    await newPayment.save()
-    res.status(201).json(newPayment)
-  } catch (err) {
-    console.error('❌ Create payment error:', err)
-    res.status(500).json({ error: 'Could not create payment' })
-  }
-}
-
-async function getPayments(req, res) {
-  try {
-    const payments = await Payment.find().lean()
+    const payments = await PaymentService.getAllPayments()
     res.json(payments)
   } catch (err) {
-    console.error('❌ Fetch payments error:', err)
-    res.status(500).json({ error: 'Could not fetch payments' })
+    next(err)
   }
 }
 
-module.exports = { createPayment, getPayments }
+async function createPayment(req, res, next) {
+  try {
+    const newPayment = await PaymentService.createPayment(req.body)
+    res.status(201).json(newPayment)
+  } catch (err) {
+    next(err)
+  }
+}
+
+module.exports = { getPayments, createPayment }

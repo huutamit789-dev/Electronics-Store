@@ -1,42 +1,34 @@
 // Order Controller
-// Handles order-related CRUD operations
-const Order = require('../models/Order')
+// Handles HTTP requests and responses for order operations
+// Delegates business logic to OrderService
+const OrderService = require('../services/OrderService')
 
-async function getOrders(req, res) {
+async function getOrders(req, res, next) {
   try {
-    const orders = await Order.find().populate('user_id').populate('items.product_id').lean()
+    const orders = await OrderService.getAllOrders()
     res.json(orders)
   } catch (err) {
-    console.error('❌ Fetch orders error:', err)
-    res.status(500).json({ error: 'Could not fetch orders' })
+    next(err)
   }
 }
 
-async function createOrder(req, res) {
+async function createOrder(req, res, next) {
   try {
-    const { user_id, items, total_price } = req.body
-    if (!user_id || !items || !total_price) {
-      return res.status(400).json({ error: 'user_id, items, and total_price are required' })
-    }
-
-    const newOrder = new Order({ user_id, items, total_price })
-    await newOrder.save()
+    const newOrder = await OrderService.createOrder(req.body)
     res.status(201).json(newOrder)
   } catch (err) {
-    console.error('❌ Create order error:', err)
-    res.status(500).json({ error: 'Could not create order' })
+    next(err)
   }
 }
 
-async function updateOrderStatus(req, res) {
+async function updateOrderStatus(req, res, next) {
   try {
     const { id } = req.params
     const { status } = req.body
-    const updated = await Order.findByIdAndUpdate(id, { status }, { new: true })
+    const updated = await OrderService.updateOrderStatus(id, status)
     res.json(updated)
   } catch (err) {
-    console.error('❌ Update order error:', err)
-    res.status(500).json({ error: 'Could not update order' })
+    next(err)
   }
 }
 
