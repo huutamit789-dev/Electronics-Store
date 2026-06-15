@@ -2,7 +2,9 @@
 // This file configures middleware, routes, and starts the app after the database connects.
 const express = require('express')
 const cors = require('cors')
+const swaggerUi = require('swagger-ui-express')
 const { connectDB } = require('./config/db')
+const swaggerDocument = require('./swagger')
 const userRoutes = require('./routes/userRoutes')
 const categoryRoutes = require('./routes/categoryRoutes')
 const productRoutes = require('./routes/productRoutes')
@@ -24,6 +26,9 @@ app.use(express.json())
 app.get('/', (req, res) => {
   res.json({ status: 'ok', message: 'Backend API is running' })
 })
+
+// Swagger docs route
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 // Route registration for all endpoints
 app.use('/users', userRoutes)
