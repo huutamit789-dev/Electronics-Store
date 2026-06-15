@@ -13,6 +13,7 @@ const cartRoutes = require('./routes/cartRoutes')
 const paymentRoutes = require('./routes/paymentRoutes')
 const reviewRoutes = require('./routes/reviewRoutes')
 const orderHistoryRoutes = require('./routes/orderHistoryRoutes')
+const { errorHandler } = require('./middleware/errorHandler')
 require('dotenv').config()
 
 const PORT = process.env.PORT || 8000
@@ -39,6 +40,9 @@ app.use('/cart', cartRoutes)
 app.use('/payments', paymentRoutes)
 app.use('/reviews', reviewRoutes)
 app.use('/order-history', orderHistoryRoutes)
+
+// Error handling middleware
+app.use(errorHandler)
 
 // Connect to MongoDB before starting the HTTP server
 connectDB()
