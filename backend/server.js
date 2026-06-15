@@ -2,7 +2,9 @@
 // This file configures middleware, routes, and starts the app after the database connects.
 const express = require('express')
 const cors = require('cors')
+const swaggerUi = require('swagger-ui-express')
 const { connectDB } = require('./config/db')
+const swaggerDocument = require('./swagger')
 const userRoutes = require('./routes/userRoutes')
 const categoryRoutes = require('./routes/categoryRoutes')
 const productRoutes = require('./routes/productRoutes')
@@ -11,6 +13,7 @@ const cartRoutes = require('./routes/cartRoutes')
 const paymentRoutes = require('./routes/paymentRoutes')
 const reviewRoutes = require('./routes/reviewRoutes')
 const orderHistoryRoutes = require('./routes/orderHistoryRoutes')
+const { errorHandler } = require('./middleware/errorHandler')
 require('dotenv').config()
 
 const PORT = process.env.PORT || 8000
@@ -25,6 +28,9 @@ app.get('/', (req, res) => {
   res.json({ status: 'ok', message: 'Backend API is running' })
 })
 
+// Swagger docs route
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+
 // Route registration for all endpoints
 app.use('/users', userRoutes)
 app.use('/categories', categoryRoutes)
@@ -34,6 +40,9 @@ app.use('/cart', cartRoutes)
 app.use('/payments', paymentRoutes)
 app.use('/reviews', reviewRoutes)
 app.use('/order-history', orderHistoryRoutes)
+
+// Error handling middleware
+app.use(errorHandler)
 
 // Connect to MongoDB before starting the HTTP server
 connectDB()
