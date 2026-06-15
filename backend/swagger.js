@@ -13,6 +13,13 @@ const swaggerDocument = {
     }
   ],
   components: {
+    securitySchemes: {
+    bearerAuth: {
+      type: 'http',
+      scheme: 'bearer',
+      bearerFormat: 'JWT'
+    }
+  },
     // Schema definitions describe the data models used in the API.
     // These correspond to collections/tables in the MongoDB database.
     schemas: {
@@ -28,6 +35,30 @@ const swaggerDocument = {
           createdAt: { type: 'string', format: 'date-time' }
         }
       },
+      LoginRequest: {
+        type: 'object',
+        required: ['email', 'password'],
+        properties: {
+          email: { type: 'string', format: 'email', example: 'john@example.com' },
+          password: { type: 'string', example: 'strongPassword123' }
+        }
+      },
+      LoginResponse: {
+        type: 'object',
+        properties: {
+          token: { type: 'string', example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...' },
+          user: {
+            type: 'object',
+            properties: {
+              id: { type: 'string', example: '64adf1ab1234567890abcdef' },
+              username: { type: 'string', example: 'john_doe' },
+              email: { type: 'string', format: 'email', example: 'john@example.com' },
+              phonenumber: { type: 'string', example: '0123456789' }
+            }
+          }
+        }
+      },
+      
       // Category schema: product categories (e.g., Laptops, Phones, etc.).
       Category: {
         type: 'object',
@@ -177,6 +208,33 @@ const swaggerDocument = {
         responses: {
           '201': { description: 'User created successfully' },
           '400': { description: 'Invalid request', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+        }
+      }
+    },
+    '/users/login': {
+      post: {
+        tags: ['Users'],
+        summary: 'Login with email and password',
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: { $ref: '#/components/schemas/LoginRequest' }
+            }
+          }
+        },
+        responses: {
+          '200': {
+            description: 'Login successful',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/LoginResponse' }
+              }
+            }
+          },
+          '400': { description: 'Missing email or password', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } },
+          '401': { description: 'Invalid password', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } },
+          '404': { description: 'User not found', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
         }
       }
     },

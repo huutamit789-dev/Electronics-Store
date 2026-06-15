@@ -1,1 +1,35 @@
-// Payment Service\n// Handles business logic and validation for payment operations\nconst PaymentRepository = require('../repositories/PaymentRepository')\n\nconst VALID_METHODS = ['cod', 'credit_card', 'momo', 'zalopay']\nconst VALID_STATUSES = ['pending', 'paid', 'failed', 'refunded']\n\nclass PaymentService {\n  // Get all payments\n  async getAllPayments() {\n    return await PaymentRepository.findAll()\n  }\n\n  // Create a new payment\n  async createPayment(paymentData) {\n    const { order_id, payment_method } = paymentData\n\n    // Validation\n    if (!order_id || !payment_method) {\n      const error = new Error('order_id and payment_method are required')\n      error.status = 400\n      throw error\n    }\n\n    if (!VALID_METHODS.includes(payment_method)) {\n      const error = new Error(`Payment method must be one of: ${VALID_METHODS.join(', ')}`)\n      error.status = 400\n      throw error\n    }\n\n    const newPayment = await PaymentRepository.create(paymentData)\n    return newPayment\n  }\n}\n\nmodule.exports = new PaymentService()
+// Payment Service
+// Handles business logic and validation for payment operations
+const PaymentRepository = require('../repositories/PaymentRepository')
+
+const VALID_METHODS = ['cod', 'credit_card', 'momo', 'zalopay']
+
+class PaymentService {
+  // Get all payments
+  async getAllPayments() {
+    return await PaymentRepository.findAll()
+  }
+
+  // Create a new payment
+  async createPayment(paymentData) {
+    const { order_id, payment_method } = paymentData
+
+    // Validation
+    if (!order_id || !payment_method) {
+      const error = new Error('order_id and payment_method are required')
+      error.status = 400
+      throw error
+    }
+
+    if (!VALID_METHODS.includes(payment_method)) {
+      const error = new Error(`Payment method must be one of: ${VALID_METHODS.join(', ')}`)
+      error.status = 400
+      throw error
+    }
+
+    const newPayment = await PaymentRepository.create(paymentData)
+    return newPayment
+  }
+}
+
+module.exports = new PaymentService()

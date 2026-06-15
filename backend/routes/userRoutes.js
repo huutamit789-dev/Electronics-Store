@@ -1,7 +1,7 @@
 // Route definitions for user operations
 // This file maps HTTP paths to controller functions.
 const express = require('express')
-const { getUsers, createUser } = require('../controllers/userController')
+const { getUsers, createUser, loginUser } = require('../controllers/userController')
 
 const router = express.Router()
 
@@ -10,5 +10,8 @@ router.get('/', getUsers)
 
 // POST /users -> create a new user with hashed password
 router.post('/', createUser)
+
+// POST /users/login -> verify credentials and return a JWT
+router.post('/login', loginUser)
 
 module.exports = router

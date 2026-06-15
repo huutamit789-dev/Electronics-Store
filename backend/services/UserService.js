@@ -2,8 +2,10 @@
 // Handles business logic and validation for user operations
 const UserRepository = require('../repositories/UserRepository')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const SALT_ROUNDS = 10
+const JWT_EXPIRES_IN = '1d'
 
 class UserService {
   // Get all users
@@ -54,6 +56,18 @@ class UserService {
 
   // Verify user password (for login)
   async verifyPassword(email, password) {
+    if (!email || !password) {
+      const error = new Error('email and password are required')
+      error.status = 400
+      throw error
+    }
+
+    if (!process.env.JWT_SECRET) {
+      const error = new Error('JWT_SECRET is not defined in .env')
+      error.status = 500
+      throw error
+    }
+
     const user = await UserRepository.findByEmail(email)
     if (!user) {
       const error = new Error('User not found')
@@ -68,11 +82,21 @@ class UserService {
       throw error
     }
 
-    return {
+    const payload = {
       id: user._id,
-      username: user.username,
-      email: user.email,
-      phonenumber: user.phonenumber
+      email: user.email
+    }
+
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: JWT_EXPIRES_IN })
+
+    return {
+      token,
+      user: {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        phonenumber: user.phonenumber
+      }
     }
   }
 

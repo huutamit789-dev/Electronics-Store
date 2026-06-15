@@ -21,4 +21,14 @@ async function createUser(req, res, next) {
   }
 }
 
-module.exports = { getUsers, createUser }
+async function loginUser(req, res, next) {
+  try {
+    const { email, password } = req.body
+    const result = await UserService.verifyPassword(email, password)
+    res.json(result)
+  } catch (err) {
+    next(err)
+  }
+}
+
+module.exports = { getUsers, createUser, loginUser }
