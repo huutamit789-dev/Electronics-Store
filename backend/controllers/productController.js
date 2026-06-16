@@ -2,55 +2,43 @@ const ProductService = require('../services/ProductService')
 const { asyncHandler } = require('../middleware/asyncHandler')
 
 /**
- * @desc Get all products with category data.
- * @route GET /products
- * @access Public
+ * @desc Get all products (Public)
  */
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await ProductService.getAllProducts()
+  const products = await ProductService.getAllProducts(req.user, req.query.page, req.query.limit)
   res.success(products, 'Products returned successfully')
 })
 
 /**
- * @desc Get product detail by ID.
- * @route GET /products/:id
- * @access Public
+ * @desc Get product detail (Public)
  */
 const getProductById = asyncHandler(async (req, res) => {
-  const { id } = req.params
-  const product = await ProductService.getProductById(id)
+  const product = await ProductService.getProductById(req.params.id)
   res.success(product, 'Product returned successfully')
 })
 
 /**
- * @desc Create a new product.
- * @route POST /products
- * @access Public
+ * @desc Create a new product (Admin Only)
  */
 const createProduct = asyncHandler(async (req, res) => {
-  const newProduct = await ProductService.createProduct(req.body)
+  // Truyền req.user vào để Service kiểm tra quyền
+  const newProduct = await ProductService.createProduct(req.user, req.body)
   res.success(newProduct, 'Product created successfully', 201)
 })
 
 /**
- * @desc Update an existing product by ID.
- * @route PUT /products/:id
- * @access Public
+ * @desc Update a product (Admin Only)
  */
 const updateProduct = asyncHandler(async (req, res) => {
-  const { id } = req.params
-  const updated = await ProductService.updateProduct(id, req.body)
+  const updated = await ProductService.updateProduct(req.user, req.params.id, req.body)
   res.success(updated, 'Product updated successfully')
 })
 
 /**
- * @desc Delete an existing product by ID.
- * @route DELETE /products/:id
- * @access Public
+ * @desc Delete a product (Admin Only)
  */
 const deleteProduct = asyncHandler(async (req, res) => {
-  const { id } = req.params
-  await ProductService.deleteProduct(id)
+  await ProductService.deleteProduct(req.user, req.params.id)
   res.success(null, 'Product deleted successfully')
 })
 

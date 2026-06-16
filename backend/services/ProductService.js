@@ -1,83 +1,56 @@
-const ProductRepository = require('../repositories/ProductRepository')
+const ProductRepository = require('../repositories/ProductRepository');
 
 class ProductService {
-
-  _throwError(message, status) {
-    const error = new Error(message);
-    error.status = status;
-    throw error;
-  }
-
-  // Get all products
-  async getAllProducts(page = 1, limit = 10) {
-    try {
-      return await ProductRepository.findAll(page, limit);
-    } catch (error) {
-      console.error('Service Error [getAllProducts]:', error);
-      throw new Error('Lỗi truy xuất danh sách sản phẩm');
+ // Lấy tất cả sản phẩm (Admin only)
+  async getAllProducts(user, page = 1, limit = 10) {
+    if (!user || user.role !== 'admin') {
+      throw new Error('Bạn không có quyền truy cập danh sách này');
     }
+    return await ProductRepository.findAll(page, limit);
   }
-
-  // Get product by ID
+  // Lấy sản phẩm theo ID (Public)
   async getProductById(id) {
-    if (!id) this._throwError('Product ID is required', 400);
+    if (!id) throw new Error('Product ID is required');
 
-    try {
-      const product = await ProductRepository.findById(id);
-      if (!product) this._throwError('Product not found', 404);
-      return product;
-    } catch (error) {
-      console.error(`Service Error [getProductById - ${id}]:`, error);
-      if (error.status === 404) throw error;
-      throw new Error('Lỗi khi lấy thông tin sản phẩm');
-    }
+    const product = await ProductRepository.findById(id);
+    if (!product) throw new Error('Product not found');
+    
+    return product;
   }
 
-  // Create a new product
-  async createProduct(productData) {
+  // Tạo sản phẩm mới (Admin only)
+  async createProduct(user, productData) {
+    if (!user || user.role !== 'admin') throw new Error('Bạn không có quyền thực hiện tác vụ này');
+
     const { name, price, category_id } = productData;
 
-    // Validation
-    if (!name || !price || !category_id) this._throwError('name, price, and category_id are required', 400);
-    if (price <= 0) this._throwError('price must be greater than 0', 400);
+    if (!name || !price || !category_id) throw new Error('name, price, and category_id are required');
+    if (price <= 0) throw new Error('price must be greater than 0');
 
-    try {
-      return await ProductRepository.create(productData);
-    } catch (error) {
-      console.error('Service Error [createProduct]:', error);
-      throw new Error('Không thể tạo sản phẩm mới');
-    }
+    return await ProductRepository.create(productData);
   }
 
-  // Update product
-  async updateProduct(id, productData) {
-    if (!id) this._throwError('Product ID is required', 400);
+  // Cập nhật sản phẩm (Admin only)
+  async updateProduct(user, id, productData) {
+    if (!user || user.role !== 'admin') throw new Error('Bạn không có quyền thực hiện tác vụ này');
+    if (!id) throw new Error('Product ID is required');
 
-    try {
-      const updated = await ProductRepository.update(id, productData);
-      if (!updated) this._throwError('Product not found', 404);
-      return updated;
-    } catch (error) {
-      console.error(`Service Error [updateProduct - ${id}]:`, error);
-      if (error.status === 404) throw error;
-      throw new Error('Lỗi khi cập nhật sản phẩm');
-    }
+    const updated = await ProductRepository.update(id, productData);
+    if (!updated) throw new Error('Product not found');
+    
+    return updated;
   }
 
-  // Delete product
-  async deleteProduct(id) {
-    if (!id) this._throwError('Product ID is required', 400);
+  // Xóa sản phẩm (Admin only)
+  async deleteProduct(user, id) {
+    if (!user || user.role !== 'admin') throw new Error('Bạn không có quyền thực hiện tác vụ này');
+    if (!id) throw new Error('Product ID is required');
 
-    try {
-      const deleted = await ProductRepository.delete(id);
-      if (!deleted) this._throwError('Product not found', 404);
-      return deleted;
-    } catch (error) {
-      console.error(`Service Error [deleteProduct - ${id}]:`, error);
-      if (error.status === 404) throw error;
-      throw new Error('Lỗi khi xóa sản phẩm');
-    }
+    const deleted = await ProductRepository.delete(id);
+    if (!deleted) throw new Error('Product not found');
+    
+    return deleted;
   }
 }
 
-module.exports = new ProductService()
+module.exports = new ProductService();

@@ -24,7 +24,7 @@ async function authMiddleware(req, res, next) {
       throw error
     }
 
-    req.user = user // Gắn user vào request
+    req.user = user 
     next()
   } catch (err) {
     if (err.name === 'JsonWebTokenError' || err.name === 'TokenExpiredError') {

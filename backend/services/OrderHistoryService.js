@@ -1,40 +1,23 @@
-const OrderHistoryRepository = require('../repositories/OrderHistoryRepository')
+const OrderHistoryRepository = require('../repositories/OrderHistoryRepository');
 
 class OrderHistoryService {
-  
-  // Hàm trợ giúp để ném lỗi nghiệp vụ
-  _throwError(message, status) {
-    const error = new Error(message);
-    error.status = status;
-    throw error;
-  }
-
-  // Get all order history entries
+  // Lấy tất cả lịch sử đơn hàng với phân trang
   async getAllOrderHistory(page = 1, limit = 10) {
-    try {
-      return await OrderHistoryRepository.findAll(page, limit);
-    } catch (error) {
-      console.error('Service Error [getAllOrderHistory]:', error);
-      throw new Error('Lỗi truy xuất lịch sử đơn hàng');
-    }
+    return await OrderHistoryRepository.findAll(page, limit);
   }
 
-  // Create a new order history entry
+  // Tạo một bản ghi lịch sử đơn hàng mới
   async addOrderHistory(historyData) {
     const { order_id, new_status } = historyData;
 
-    // Validation
+    // Validation cơ bản
     if (!order_id || !new_status) {
-      this._throwError('order_id and new_status are required', 400);
+      throw new Error('order_id and new_status are required');
     }
 
-    try {
-      return await OrderHistoryRepository.create(historyData);
-    } catch (error) {
-      console.error('Service Error [addOrderHistory]:', error);
-      this._throwError('Không thể tạo lịch sử đơn hàng', 500);
-    }
+    // Không cần try-catch ở đây nếu bạn đã có Error Middleware ở tầng trên
+    return await OrderHistoryRepository.create(historyData);
   }
 }
 
-module.exports = new OrderHistoryService()
+module.exports = new OrderHistoryService();

@@ -1,42 +1,49 @@
-const CategoryRepository = require('../repositories/CategoryRepository')
+const CategoryRepository = require('../repositories/CategoryRepository');
 
 class CategoryService {
-  
-  // Hàm trợ giúp để ném lỗi nghiệp vụ
-  _throwError(message, status) {
-    const error = new Error(message);
-    error.status = status;
-    throw error;
+  // Nhận vào user object để kiểm tra quyền
+  async getAllCategories(user, page = 1, limit = 10) {
+    // 1. Kiểm tra quyền (Authorization)
+    if (!user || user.role !== 'admin') {
+      const error = new Error('Bạn không có quyền truy cập');
+      error.status = 403; // Forbidden
+      throw error;
+    }
+    return await CategoryRepository.findAll(page, limit);
   }
 
-// Get all categories (có hỗ trợ phân trang)
-  async getAllCategories(page = 1, limit = 10) {
-    try {
-      // Truyền page và limit xuống Repository
-      return await CategoryRepository.findAll(page, limit);
-    } catch (error) {
-      console.error('Service Error [getAllCategories]:', error);
-      throw new Error('Không thể lấy danh sách danh mục');
+// Create a new category
+  async createCategory(user, categoryData) {
+    // 1. Kiểm tra quyền (Authorization)
+    if (!user || user.role !== 'admin') {
+      const error = new Error('Bạn không có quyền thực hiện hành động này');
+      error.status = 403;
+      throw error;
     }
-  }
-  // Create a new category
-  async createCategory(categoryData) {
+
     const { name } = categoryData;
 
-    // Validation
-    if (!name) this._throwError('Category name is required', 400);
+    // 2. Validation
+    if (!name) {
+      const error = new Error('Category name is required');
+      error.status = 400;
+      throw error;
+    }
 
     try {
-      return await CategoryRepository.create(categoryData);
+      // 3. Thực hiện tạo trong Database
+      const newCategory = await CategoryRepository.create(categoryData);
+      return newCategory;
     } catch (error) {
-      console.error('Service Error [createCategory]:', error);
-      // Kiểm tra lỗi trùng lặp (ví dụ: MongoDB duplicate key error code 11000)
+      // 5. Xử lý lỗi đặc thù (Duplicate key)
       if (error.code === 11000) {
-        this._throwError('Danh mục này đã tồn tại', 409);
+        const err = new Error('Danh mục này đã tồn tại');
+        err.status = 409;
+        throw err;
       }
-      throw new Error('Lỗi khi tạo danh mục mới');
+      throw error; 
     }
   }
 }
 
-module.exports = new CategoryService()
+module.exports = new CategoryService();

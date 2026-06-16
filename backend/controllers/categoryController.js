@@ -7,7 +7,8 @@ const { asyncHandler } = require('../middleware/asyncHandler')
  * @access Public
  */
 const getCategories = asyncHandler(async (req, res) => {
-  const categories = await CategoryService.getAllCategories()
+  const currentUser = req.user; 
+  const categories = await CategoryService.getAllCategories(currentUser)
   res.success(categories, 'Categories returned successfully')
 })
 
@@ -17,7 +18,8 @@ const getCategories = asyncHandler(async (req, res) => {
  * @access Public
  */
 const createCategory = asyncHandler(async (req, res) => {
-  const newCategory = await CategoryService.createCategory(req.body)
+   const currentUser = req.user; 
+  const newCategory = await CategoryService.createCategory(currentUser, req.body)
   res.success(newCategory, 'Category created successfully', 201)
 })
 

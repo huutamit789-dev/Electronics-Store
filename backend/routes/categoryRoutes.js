@@ -5,7 +5,7 @@ const { authMiddleware } = require('../middleware/authMiddleware')
 
 const router = express.Router()
 
-router.get('/', getCategories)
+router.get('/',authMiddleware, getCategories)
 router.post('/', authMiddleware, createCategory)
 
 module.exports = router
