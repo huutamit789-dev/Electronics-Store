@@ -12,7 +12,7 @@ class ProductRepository {
     // Chạy song song truy vấn dữ liệu và đếm tổng
     const [products, total] = await Promise.all([
       Product.find()
-        .populate('category_id')
+        .populate('cate_id')
         .sort({ createdAt: -1 }) 
         .skip(skip)
         .limit(limitNum)
@@ -29,7 +29,7 @@ class ProductRepository {
   }
   // Find product by ID
   async findById(id) {
-    return await Product.findById(id).populate('category_id').lean()
+    return await Product.findById(id).populate('cate_id').lean()
   }
 
   // Create a new product

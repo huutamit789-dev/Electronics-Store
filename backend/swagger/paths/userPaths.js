@@ -33,7 +33,7 @@ module.exports = {
         '400': { description: 'Invalid request', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
       }
     }
-  },
+  }, // <--- Dấu phẩy này rất quan trọng
   '/users/login': {
     post: {
       tags: ['Users'],
@@ -58,6 +58,39 @@ module.exports = {
         '400': { description: 'Missing email or password', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } },
         '401': { description: 'Invalid password', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } },
         '404': { description: 'User not found', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+      }
+    }
+  }, 
+  '/users/{id}': {
+    put: {
+      tags: ['Users'],
+      summary: 'Update user by ID',
+      parameters: [
+        { name: 'id', in: 'path', required: true, schema: { type: 'string' } }
+      ],
+      requestBody: {
+        required: true,
+        content: {
+          'application/json': { schema: { $ref: '#/components/schemas/User' } }
+        }
+      },
+      responses: {
+        '200': { description: 'User updated successfully' },
+        '400': { description: 'Invalid request' },
+        '404': { description: 'User not found' }
+      }
+    },
+    delete: {
+      tags: ['Users'],
+      summary: 'Delete a user by ID',
+      parameters: [
+        { name: 'id', in: 'path', required: true, schema: { type: 'string' } }
+      ],
+      responses: {
+        '200': { description: 'User deleted successfully' },
+        '401': { description: 'Unauthorized' },
+        '403': { description: 'Access denied: Admins only' },
+        '404': { description: 'User not found' }
       }
     }
   }

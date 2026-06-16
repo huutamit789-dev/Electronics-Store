@@ -22,9 +22,9 @@ class ProductService {
   async createProduct(user, productData) {
     if (!user || user.role !== 'admin') throw new Error('Bạn không có quyền thực hiện tác vụ này');
 
-    const { name, price, category_id } = productData;
+    const { name, price, cate_id } = productData;
 
-    if (!name || !price || !category_id) throw new Error('name, price, and category_id are required');
+    if (!name || !price || !cate_id) throw new Error('name, price, and cate_id are required');
     if (price <= 0) throw new Error('price must be greater than 0');
 
     return await ProductRepository.create(productData);

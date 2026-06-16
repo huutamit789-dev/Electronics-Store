@@ -44,4 +44,19 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
   res.success(updated, 'Order status updated successfully')
 })
 
-module.exports = { getOrders, getOrderById, createOrder, updateOrderStatus }
+/**
+ * @desc Delete an order by order ID.
+ * @route DELETE /orders/:id
+ * @access Public
+ */
+const deleteOrder = asyncHandler(async (req, res) => {
+  const currentUser = req.user; // Lấy từ authMiddleware
+  console.log('Current user in deleteOrder controller:', currentUser); // Debug log
+  const orderIdToDelete = req.params.id;
+
+  const result = await OrderService.deleteOrder(currentUser, orderIdToDelete);
+
+  res.success(result, 'Order deleted successfully');
+});
+
+module.exports = { getOrders, getOrderById, createOrder, updateOrderStatus, deleteOrder }

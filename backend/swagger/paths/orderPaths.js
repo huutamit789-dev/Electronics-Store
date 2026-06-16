@@ -58,4 +58,15 @@
            }
       }
     },
+      delete: {
+      tags: ['orders'],
+      summary: 'Delete an existing order',
+      parameters: [
+        { name: 'id', in: 'path', required: true, schema: { type: 'string' }, description: 'Order ID to delete' }
+      ],
+      responses: {
+        '200': { description: 'Order deleted successfully' },
+        '404': { description: 'Order not found', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+      }
+    }
 };

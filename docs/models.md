@@ -10,7 +10,7 @@ This document describes the backend Mongoose schemas, field meanings, and foreig
 - `phonenumber`: String, required
 - `createdAt`: Date, default `Date.now`
 
-## Category
+## cate
 - `_id`: ObjectId
 - `name`: String, required, unique
 - `description`: String
@@ -21,7 +21,7 @@ This document describes the backend Mongoose schemas, field meanings, and foreig
 - `description`: String
 - `price`: Number, required
 - `stock_quantity`: Number, default `0`
-- `category_id`: ObjectId, ref `Category`
+- `cate_id`: ObjectId, ref `cate`
 
 ## Order
 - `_id`: ObjectId

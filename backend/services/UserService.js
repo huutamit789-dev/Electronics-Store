@@ -61,6 +61,42 @@ async getAllUsers(currentUser, page = 1, limit = 10) {
     
     return user;
   }
+
+
+  // Cập nhật user (Admin only)
+  async updateUser(currentUser, userId, userData) {
+    if (!currentUser || currentUser.role !== 'admin') throw new Error('Bạn không có quyền thực hiện tác vụ này');
+    if (!userId) throw new Error('User ID is required');
+
+    const updated = await UserRepository.update(userId, userData);
+    if (!updated) throw new Error('User not found');
+    
+    return updated;
+  }
+
+  async deleteUser(currentUser, userIdToDelete) {
+    // 1. Kiểm tra quyền Admin
+    if (!currentUser || currentUser.role !== 'admin') {
+      const error = new Error('Bạn không có quyền thực hiện hành động này');
+      error.status = 403;
+      throw error;
+    }
+
+    // 2. Không cho phép Admin tự xóa chính mình (tùy chọn)
+    if (currentUser._id.toString() === userIdToDelete) {
+      const error = new Error('Bạn không thể tự xóa tài khoản của chính mình');
+      error.status = 400;
+      throw error;
+    }
+
+    // 3. Thực hiện xóa
+    const deletedUser = await UserRepository.delete(userIdToDelete);
+    if (!deletedUser) {
+      const error = new Error('Người dùng không tồn tại');
+      error.status = 404;
+      throw error;
+    }
+  }
 }
 
 module.exports = new UserService();

@@ -38,6 +38,21 @@ class OrderService {
     
     return updated;
   }
-}
 
+    async deleteOrder(currentUser, orderIdToDelete) {
+        // 1. Kiểm tra quyền Admin
+        if (!currentUser || currentUser.role !== 'admin') {
+          const error = new Error('Bạn không có quyền thực hiện hành động này');
+          error.status = 403;
+          throw error;
+        }
+        // 3. Thực hiện xóa
+        const deletedOrder = await OrderRepository.delete(orderIdToDelete);
+        if (!deletedOrder) {
+          const error = new Error('Đơn hàng không tồn tại');
+          error.status = 404;
+          throw error;
+        }
+}
+}
 module.exports = new OrderService();
