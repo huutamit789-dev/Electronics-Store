@@ -1,109 +1,90 @@
-// User Service
-// Handles business logic and validation for user operations
 const UserRepository = require('../repositories/UserRepository')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const config = require('../config/config')
 
 class UserService {
-  // Get all users
-  async getAllUsers() {
-    return await UserRepository.findAll()
+
+  _throwError(message, status) {
+    const error = new Error(message);
+    error.status = status;
+    throw error;
   }
 
-  // Create a new user
+async getAllUsers(page = 1, limit = 10) {
+    try {
+      return await UserRepository.findAll(page, limit);
+    } catch (error) {
+      console.error('Service Error [getAllUsers]:', error);
+      throw new Error('Lỗi truy xuất danh sách người dùng');
+    }
+  }
+
   async createUser(userData) {
-    const { username, email, password, phonenumber } = userData
+    const { username, email, password, phonenumber } = userData;
 
     // Validation
     if (!username || !email || !password || !phonenumber) {
-      const error = new Error('username, email, password and phonenumber are required')
-      error.status = 400
-      throw error
+      this._throwError('Thông tin đăng ký không đầy đủ', 400);
     }
 
-    // Check if email already exists
-    const existing = await UserRepository.findByEmail(email)
-    if (existing) {
-      const error = new Error('Email already in use')
-      error.status = 409
-      throw error
-    }
+    try {
+      const existing = await UserRepository.findByEmail(email);
+      if (existing) this._throwError('Email đã được sử dụng', 409);
 
-    // Hash password
-  const hashedPassword = await bcrypt.hash(password, config.SALT_ROUNDS || 10);
+      const hashedPassword = await bcrypt.hash(password, config.SALT_ROUNDS || 10);
 
-    // Create user
-    const newUser = await UserRepository.create({
-      username,
-      email,
-      password: hashedPassword,
-      phonenumber
-    })
+      const newUser = await UserRepository.create({
+        username, email, password: hashedPassword, phonenumber
+      });
 
-    // Return user without password
-    return {
-      insertedId: newUser._id,
-      user: {
-        username: newUser.username,
-        email: newUser.email,
-        phonenumber: newUser.phonenumber
-      }
+      return {
+        insertedId: newUser._id,
+        user: { username: newUser.username, email: newUser.email, phonenumber: newUser.phonenumber }
+      };
+    } catch (error) {
+      console.error('Service Error [createUser]:', error);
+      if (error.status === 409) throw error;
+      throw new Error('Đã có lỗi xảy ra khi tạo tài khoản');
     }
   }
 
-  // Verify user password (for login)
   async verifyPassword(email, password) {
-    if (!email || !password) {
-      const error = new Error('email and password are required')
-      error.status = 400
-      throw error
-    }
+    if (!email || !password) this._throwError('email và password là bắt buộc', 400);
 
-    const user = await UserRepository.findByEmail(email)
-    if (!user) {
-      const error = new Error('User not found')
-      error.status = 404
-      throw error
-    }
+    try {
+      const user = await UserRepository.findByEmail(email);
+      if (!user) this._throwError('Người dùng không tồn tại', 404);
 
-    const isMatch = await bcrypt.compare(password, user.password)
-    if (!isMatch) {
-      const error = new Error('Invalid password')
-      error.status = 401
-      throw error
-    }
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) this._throwError('Mật khẩu không chính xác', 401);
 
-    const payload = {
-      id: user._id,
-      email: user.email
-    }
+      const payload = { id: user._id, email: user.email };
+      const token = jwt.sign(payload, config.JWT_SECRET, { expiresIn: config.JWT_EXPIRES_IN });
 
-    const token = jwt.sign(
-      payload, 
-      config.JWT_SECRET,
-      { expiresIn: config.JWT_EXPIRES_IN } 
-    )
-    return {
-      token,
-      user: {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-        phonenumber: user.phonenumber
-      }
+      return {
+        token,
+        user: { id: user._id, username: user.username, email: user.email, phonenumber: user.phonenumber }
+      };
+    } catch (error) {
+      console.error(`Service Error [verifyPassword - ${email}]:`, error);
+      if ([404, 401].includes(error.status)) throw error;
+      throw new Error('Lỗi trong quá trình xác thực');
     }
   }
 
-  // Get user by ID
   async getUserById(id) {
-    const user = await UserRepository.findById(id)
-    if (!user) {
-      const error = new Error('User not found')
-      error.status = 404
-      throw error
+    if (!id) this._throwError('ID người dùng là bắt buộc', 400);
+    
+    try {
+      const user = await UserRepository.findById(id);
+      if (!user) this._throwError('Người dùng không tồn tại', 404);
+      return user;
+    } catch (error) {
+      console.error(`Service Error [getUserById - ${id}]:`, error);
+      if (error.status === 404) throw error;
+      throw new Error('Lỗi lấy thông tin người dùng');
     }
-    return user
   }
 }
 

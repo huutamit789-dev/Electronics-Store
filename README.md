@@ -26,6 +26,6 @@ Detailed model reference is available at `docs/models.md`.
 3. Create `.env` with:
 	```env
 	DB_STRING=mongodb://admin:password123@localhost:27017/
-	PORT=8000
+	PORT=8090
 	```
 4. `npm start`

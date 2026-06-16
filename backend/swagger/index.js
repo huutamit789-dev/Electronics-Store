@@ -9,7 +9,7 @@ const swaggerDocument = {
     description: 'API documentation for the ElectricStore e-commerce backend.'
   },
   servers: [
-    { url: 'http://localhost:8000', description: 'Local development server' }
+    { url: 'http://localhost:8090 ', description: 'Local development server' }
   ],
   components: components,
   paths: paths

@@ -3,9 +3,29 @@
 const Order = require('../models/OrderModel')
 
 class OrderRepository {
-  // Find all orders
-  async findAll() {
-    return await Order.find().populate('user_id', '-password').populate('items.product_id').lean()
+  // Find all orders with pagination
+  async findAll(page = 1, limit = 10) {
+    const pageNum = parseInt(page);
+    const limitNum = parseInt(limit);
+    const skip = (pageNum - 1) * limitNum;
+
+    const [orders, total] = await Promise.all([
+      Order.find()
+        .populate('user_id', '-password') // Loại bỏ password của user
+        .populate('items.product_id')
+        .sort({ createdAt: -1 }) // Sắp xếp theo đơn hàng mới nhất
+        .skip(skip)
+        .limit(limitNum)
+        .lean(),
+      Order.countDocuments()
+    ]);
+
+    return {
+      orders,
+      total,
+      totalPages: Math.ceil(total / limitNum),
+      currentPage: pageNum
+    };
   }
 
   // Find order by ID

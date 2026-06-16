@@ -12,4 +12,4 @@ const userRoleSchema = new mongoose.Schema({
   status: { type: String, enum: ['attempt', 'approved', 'admin'], default: 'attempt' }
 });
 
-module.exports = mongoose.model('UserRole', userRoleSchema);
+module.exports = mongoose.model('UserRole', userRoleSchema, 'user_role');

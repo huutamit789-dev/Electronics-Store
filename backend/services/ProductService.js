@@ -1,86 +1,82 @@
-// Product Service
-// Handles business logic and validation for product operations
 const ProductRepository = require('../repositories/ProductRepository')
 
 class ProductService {
+
+  _throwError(message, status) {
+    const error = new Error(message);
+    error.status = status;
+    throw error;
+  }
+
   // Get all products
-  async getAllProducts() {
-    return await ProductRepository.findAll()
+  async getAllProducts(page = 1, limit = 10) {
+    try {
+      return await ProductRepository.findAll(page, limit);
+    } catch (error) {
+      console.error('Service Error [getAllProducts]:', error);
+      throw new Error('Lỗi truy xuất danh sách sản phẩm');
+    }
   }
 
   // Get product by ID
   async getProductById(id) {
-    if (!id) {
-      const error = new Error('Product ID is required')
-      error.status = 400
-      throw error
-    }
+    if (!id) this._throwError('Product ID is required', 400);
 
-    const product = await ProductRepository.findById(id)
-    if (!product) {
-      const error = new Error('Product not found')
-      error.status = 404
-      throw error
+    try {
+      const product = await ProductRepository.findById(id);
+      if (!product) this._throwError('Product not found', 404);
+      return product;
+    } catch (error) {
+      console.error(`Service Error [getProductById - ${id}]:`, error);
+      if (error.status === 404) throw error;
+      throw new Error('Lỗi khi lấy thông tin sản phẩm');
     }
-
-    return product
   }
 
   // Create a new product
   async createProduct(productData) {
-    const { name, price, category_id } = productData
+    const { name, price, category_id } = productData;
 
     // Validation
-    if (!name || !price || !category_id) {
-      const error = new Error('name, price, and category_id are required')
-      error.status = 400
-      throw error
-    }
+    if (!name || !price || !category_id) this._throwError('name, price, and category_id are required', 400);
+    if (price <= 0) this._throwError('price must be greater than 0', 400);
 
-    if (price <= 0) {
-      const error = new Error('price must be greater than 0')
-      error.status = 400
-      throw error
+    try {
+      return await ProductRepository.create(productData);
+    } catch (error) {
+      console.error('Service Error [createProduct]:', error);
+      throw new Error('Không thể tạo sản phẩm mới');
     }
-
-    const newProduct = await ProductRepository.create(productData)
-    return newProduct
   }
 
   // Update product
   async updateProduct(id, productData) {
-    if (!id) {
-      const error = new Error('Product ID is required')
-      error.status = 400
-      throw error
-    }
+    if (!id) this._throwError('Product ID is required', 400);
 
-    const updated = await ProductRepository.update(id, productData)
-    if (!updated) {
-      const error = new Error('Product not found')
-      error.status = 404
-      throw error
+    try {
+      const updated = await ProductRepository.update(id, productData);
+      if (!updated) this._throwError('Product not found', 404);
+      return updated;
+    } catch (error) {
+      console.error(`Service Error [updateProduct - ${id}]:`, error);
+      if (error.status === 404) throw error;
+      throw new Error('Lỗi khi cập nhật sản phẩm');
     }
-
-    return updated
   }
 
   // Delete product
   async deleteProduct(id) {
-    if (!id) {
-      const error = new Error('Product ID is required')
-      error.status = 400
-      throw error
-    }
+    if (!id) this._throwError('Product ID is required', 400);
 
-    const deleted = await ProductRepository.delete(id)
-    if (!deleted) {
-      const error = new Error('Product not found')
-      error.status = 404
-      throw error
+    try {
+      const deleted = await ProductRepository.delete(id);
+      if (!deleted) this._throwError('Product not found', 404);
+      return deleted;
+    } catch (error) {
+      console.error(`Service Error [deleteProduct - ${id}]:`, error);
+      if (error.status === 404) throw error;
+      throw new Error('Lỗi khi xóa sản phẩm');
     }
-
-    return deleted
   }
 }
 

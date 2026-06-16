@@ -3,11 +3,30 @@
 const Product = require('../models/ProductModel')
 
 class ProductRepository {
-  // Find all products
-  async findAll() {
-    return await Product.find().populate('category_id').lean()
-  }
+  // Find all products with pagination
+  async findAll(page = 1, limit = 10) {
+    const pageNum = parseInt(page);
+    const limitNum = parseInt(limit);
+    const skip = (pageNum - 1) * limitNum;
 
+    // Chạy song song truy vấn dữ liệu và đếm tổng
+    const [products, total] = await Promise.all([
+      Product.find()
+        .populate('category_id')
+        .sort({ createdAt: -1 }) 
+        .skip(skip)
+        .limit(limitNum)
+        .lean(),
+      Product.countDocuments()
+    ]);
+
+    return {
+      products,
+      total,
+      totalPages: Math.ceil(total / limitNum),
+      currentPage: pageNum
+    };
+  }
   // Find product by ID
   async findById(id) {
     return await Product.findById(id).populate('category_id').lean()

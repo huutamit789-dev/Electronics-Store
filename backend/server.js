@@ -19,7 +19,7 @@ const { notFoundHandler } = require('./middleware/notFoundHandler')
 const { errorHandler } = require('./middleware/errorHandler')
 require('dotenv').config()
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8090 
 const app = express()
 
 // Middleware

@@ -8,4 +8,4 @@ const orderHistorySchema = new mongoose.Schema({
   note: String // Ghi chú lý do thay đổi (nếu có)
 });
 
-module.exports = mongoose.model('OrderHistory', orderHistorySchema);
+module.exports = mongoose.model('OrderHistory', orderHistorySchema, 'order_history');
