@@ -3,9 +3,15 @@ const ProductRepository = require('../repositories/ProductRepository');
 class ProductService {
  // Lấy tất cả sản phẩm (Admin only)
   async getAllProducts(user, page = 1, limit = 10) {
-    if (!user || user.role !== 'admin') {
-      throw new Error('Bạn không có quyền truy cập danh sách này');
-    }
+    const allowedRoles = ['admin', 'user'];
+  
+  // Kiểm tra: Nếu không có user HOẶC user không có role nằm trong danh sách cho phép
+  if (!user || !allowedRoles.includes(user.role)) {
+    const error = new Error('Bạn không có quyền truy cập');
+    error.status = 403;
+    throw error;
+  }
+  
     return await ProductRepository.findAll(page, limit);
   }
   // Lấy sản phẩm theo ID (Public)
@@ -32,7 +38,7 @@ class ProductService {
 
   // Cập nhật sản phẩm (Admin only)
   async updateProduct(user, id, productData) {
-    if (!user || user.role !== 'admin') throw new Error('Bạn không có quyền thực hiện tác vụ này');
+    if (!user || user.role !== 'admin' || user.role !== 'user') throw new Error('Bạn không có quyền thực hiện tác vụ này');
     if (!id) throw new Error('Product ID is required');
 
     const updated = await ProductRepository.update(id, productData);

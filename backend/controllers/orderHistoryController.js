@@ -7,18 +7,10 @@ const { asyncHandler } = require('../middleware/asyncHandler')
  * @access Public
  */
 const getOrderHistory = asyncHandler(async (req, res) => {
-  const history = await OrderHistoryService.getAllOrderHistory()
+  const currentUser = req.user; 
+  console.log('Current user  controller:', currentUser); 
+  const history = await OrderHistoryService.getOrderHistory(currentUser)
   res.success(history, 'Order history returned successfully')
 })
 
-/**
- * @desc Add a new order history entry.
- * @route POST /order-history
- * @access Public
- */
-const addOrderHistory = asyncHandler(async (req, res) => {
-  const newHistory = await OrderHistoryService.addOrderHistory(req.body)
-  res.success(newHistory, 'Order history created successfully', 201)
-})
-
-module.exports = { getOrderHistory, addOrderHistory }
+module.exports = { getOrderHistory }

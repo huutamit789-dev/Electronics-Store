@@ -2,12 +2,18 @@ const ReviewRepository = require('../repositories/ReviewRepository');
 
 class ReviewService {
   // Lấy danh sách tất cả các đánh giá
-  async getAllReviews(page = 1, limit = 10) {
+  async getAllReviews(user, page = 1, limit = 10) {
+    const allowedRoles = ['admin', 'user'];
+    if (!user || !allowedRoles.includes(user.role)) {
+      const error = new Error('Bạn không có quyền truy cập');
+      error.status = 403;
+      throw error;
+    }
     return await ReviewRepository.findAll(page, limit);
   }
 
   // Tạo một đánh giá mới
-  async createReview(reviewData) {
+  async createReview(user, reviewData) {
     const { user_id, product_id, rating } = reviewData;
 
     // Validation

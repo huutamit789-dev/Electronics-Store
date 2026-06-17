@@ -1,16 +1,18 @@
 const CategoriesRepository = require('../repositories/CategoriesRepository');
 
 class CategoriesService {
-  // Nhận vào user object để kiểm tra quyền
-  async getAllCategories(user, page = 1, limit = 10) {
-    // 1. Kiểm tra quyền (Authorization)
-    if (!user || user.role !== 'admin') {
-      const error = new Error('Bạn không có quyền truy cập');
-      error.status = 403; // Forbidden
-      throw error;
-    }
-    return await CategoriesRepository.findAll(page, limit);
+async getAllCategories(user, page = 1, limit = 10) {
+  const allowedRoles = ['admin', 'user'];
+  
+  // Kiểm tra: Nếu không có user HOẶC user không có role nằm trong danh sách cho phép
+  if (!user || !allowedRoles.includes(user.role)) {
+    const error = new Error('Bạn không có quyền truy cập');
+    error.status = 403;
+    throw error;
   }
+  
+  return await CategoriesRepository.findAll(page, limit);
+}
 
 // Create a new Categories
   async createCategories(user, CategoriesData) {

@@ -10,21 +10,5 @@
           }
         }
       },
-      post: {
-        tags: ['OrderHistory'],
-        summary: 'Add an order history entry',
-        requestBody: {
-          required: true,
-          content: {
-            'application/json': {
-              schema: { $ref: '#/components/schemas/OrderHistory' }
-            }
-          }
-        },
-        responses: {
-          '201': { description: 'Order history entry created successfully' },
-          '400': { description: 'Invalid request', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
-        }
-      }
     }
 }

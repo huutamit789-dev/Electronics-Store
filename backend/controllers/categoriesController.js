@@ -8,6 +8,7 @@ const { asyncHandler } = require('../middleware/asyncHandler')
  */
 const getCategories = asyncHandler(async (req, res) => {
   const currentUser = req.user; 
+  console.log('Current user in getCategories controller:', currentUser); // Debug log
   const Categories = await CategoriesService.getAllCategories(currentUser)
   res.success(Categories, 'Categories returned successfully')
 })

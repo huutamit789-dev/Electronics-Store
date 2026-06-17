@@ -4,12 +4,28 @@ const VALID_METHODS = ['cod', 'credit_card', 'momo', 'zalopay'];
 
 class PaymentService {
   // Lấy danh sách tất cả các thanh toán
-  async getAllPayments(page = 1, limit = 10) {
+  async getAllPayments(user, page = 1, limit = 10) {
+    // Kiểm tra quyền truy cập
+    const allowedRoles = ['admin'];
+    if (!user || !allowedRoles.includes(user.role)) {
+      const error = new Error('Bạn không có quyền truy cập');
+      error.status = 403;
+      throw error;
+    }
+
     return await PaymentRepository.findAll(page, limit);
   }
 
   // Tạo một giao dịch thanh toán mới
-  async createPayment(paymentData) {
+  async createPayment(user, paymentData) {
+    // Kiểm tra quyền truy cập
+    const allowedRoles = ['admin'];
+    if (!user || !allowedRoles.includes(user.role)) {
+      const error = new Error('Bạn không có quyền truy cập');
+      error.status = 403;
+      throw error;
+    }
+
     const { order_id, payment_method } = paymentData;
 
     // Validation cơ bản
