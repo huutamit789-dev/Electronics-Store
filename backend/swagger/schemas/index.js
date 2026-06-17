@@ -5,7 +5,7 @@ const Cart = require('./CartSchema');
 const Payment = require('./PaymentSchema');
 const Review = require('./ReviewSchema');
 const Common = require('./CommonSchema');
-const categories = require('./categoriesSchema');
+const Categories = require('./CategoriesSchema');
 module.exports = {
   ...User,
   ...Product,
@@ -14,5 +14,5 @@ module.exports = {
   ...Payment,
   ...Review,
   ...Common,
-  ...categories
+  ...Categories
 };

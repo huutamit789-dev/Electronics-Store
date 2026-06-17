@@ -7,10 +7,7 @@ const { asyncHandler } = require('../middleware/asyncHandler')
  * @access Public
  */
 const getUsers = asyncHandler(async (req, res) => {
-  // Giả sử req.user đã được gán bởi Middleware trước đó
   const currentUser = req.user; 
-  
-  // Truyền currentUser vào Service
   const users = await UserService.getAllUsers(currentUser);
   
   res.success(users, 'Users returned successfully');

@@ -1,15 +1,23 @@
 const mongoose = require('mongoose');
 
 const userRoleSchema = new mongoose.Schema({
-  // Trường này là "cầu nối" đến bảng User
   user_id: { 
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'User',
     required: true,
-    unique: true 
+    unique: true,
+    index: true ,
   },
-  role: { type: String, default: 'user' },
-  status: { type: String, enum: ['attempt', 'approved', 'admin'], default: 'attempt' }
-});
+  role: { 
+    type: String, 
+    enum: ['user', 'admin', 'moderator'],
+    default: 'user' 
+  },
+  status: { 
+    type: String, 
+    enum: ['attempt', 'approved', 'banned'], 
+    default: 'attempt' 
+  }
+}, { timestamps: true }); 
 
 module.exports = mongoose.model('UserRole', userRoleSchema, 'user_role');
