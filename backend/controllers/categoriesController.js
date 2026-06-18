@@ -7,9 +7,7 @@ const { asyncHandler } = require('../middleware/asyncHandler')
  * @access Public
  */
 const getCategories = asyncHandler(async (req, res) => {
-  const currentUser = req.user; 
-  console.log('Current user in getCategories controller:', currentUser); // Debug log
-  const Categories = await CategoriesService.getAllCategories(currentUser)
+  const Categories = await CategoriesService.getAllCategories()
   res.success(Categories, 'Categories returned successfully')
 })
 
@@ -26,7 +24,6 @@ const createCategories = asyncHandler(async (req, res) => {
 
 const deleteCategories = asyncHandler(async (req, res) => {
   const currentUser = req.user; // Lấy từ authMiddleware
-  console.log('Current user in deleteCategories controller:', currentUser); // Debug log
   const CategoriesIdToDelete = req.params.id;
 
   const result = await CategoriesService.deleteCategories(currentUser, CategoriesIdToDelete);
@@ -37,7 +34,6 @@ const deleteCategories = asyncHandler(async (req, res) => {
 /**
  * @desc Update a Categories by ID.
  * @route PUT /Categories/:id
- * @access Private (Admin only)
  */
 const updateCategories = asyncHandler(async (req, res) => {
   const currentUser = req.user; 

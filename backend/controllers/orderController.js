@@ -51,7 +51,6 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
  */
 const deleteOrder = asyncHandler(async (req, res) => {
   const currentUser = req.user; // Lấy từ authMiddleware
-  console.log('Current user in deleteOrder controller:', currentUser); // Debug log
   const orderIdToDelete = req.params.id;
 
   const result = await OrderService.deleteOrder(currentUser, orderIdToDelete);

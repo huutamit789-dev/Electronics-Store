@@ -2,20 +2,11 @@ const CategoriesRepository = require('../repositories/CategoriesRepository');
 
 class CategoriesService {
 async getAllCategories(user, page = 1, limit = 10) {
-  const allowedRoles = ['admin', 'user'];
-  
-  // Kiểm tra: Nếu không có user HOẶC user không có role nằm trong danh sách cho phép
-  if (!user || !allowedRoles.includes(user.role)) {
-    const error = new Error('Bạn không có quyền truy cập');
-    error.status = 403;
-    throw error;
-  }
-  
   return await CategoriesRepository.findAll(page, limit);
 }
 
 // Create a new Categories
-  async createCategories(user, CategoriesData) {
+  async createCategories(user, categoryData) {
     // 1. Kiểm tra quyền (Authorization)
     if (!user || user.role !== 'admin') {
       const error = new Error('Bạn không có quyền thực hiện hành động này');
@@ -23,7 +14,7 @@ async getAllCategories(user, page = 1, limit = 10) {
       throw error;
     }
 
-    const { name } = CategoriesData;
+    const { name } = categoryData;
 
     // 2. Validation
     if (!name) {
@@ -34,8 +25,8 @@ async getAllCategories(user, page = 1, limit = 10) {
 
     try {
       // 3. Thực hiện tạo trong Database
-      const newCategories = await CategoriesRepository.create(CategoriesData);
-      return newCategories;
+      const createdCategory = await CategoriesRepository.create(categoryData);
+      return createdCategory;
     } catch (error) {
       // 5. Xử lý lỗi đặc thù (DupliCategories key)
       if (error.code === 11000) {

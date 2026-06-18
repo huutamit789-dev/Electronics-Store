@@ -35,11 +35,9 @@ const loginUser = asyncHandler(async (req, res) => {
 /**
  * @desc Delete a user by ID.
  * @route DELETE /users/:id
- * @access Private (Admin only)
  */
 const deleteUser = asyncHandler(async (req, res) => {
   const currentUser = req.user; // Lấy từ authMiddleware
-  console.log('Current user in deleteUser controller:', currentUser); // Debug log
   const userIdToDelete = req.params.id;
 
   const result = await UserService.deleteUser(currentUser, userIdToDelete);
@@ -50,7 +48,6 @@ const deleteUser = asyncHandler(async (req, res) => {
 /**
  * @desc Update a user by ID.
  * @route PUT /users/:id
- * @access Private (Admin only)
  */
 const updateUser = asyncHandler(async (req, res) => {
   const currentUser = req.user; 

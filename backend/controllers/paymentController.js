@@ -8,7 +8,6 @@ const { asyncHandler } = require('../middleware/asyncHandler')
  */
 const getPayments = asyncHandler(async (req, res) => {
    const currentUser = req.user; 
-  console.log('Current user  controller:', currentUser); 
   const payments = await PaymentService.getAllPayments(currentUser)
   res.success(payments, 'Payments returned successfully')
 })
@@ -20,7 +19,6 @@ const getPayments = asyncHandler(async (req, res) => {
  */
 const createPayment = asyncHandler(async (req, res) => {
   const currentUser = req.user;
-  console.log('Current user  controller:', currentUser);
   const newPayment = await PaymentService.createPayment(req.body, currentUser);
   res.success(newPayment, 'Payment created successfully', 201)
 })

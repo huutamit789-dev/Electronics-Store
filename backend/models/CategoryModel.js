@@ -5,4 +5,4 @@ const cateSchema = new mongoose.Schema({
   description: String
 });
 
-module.exports = mongoose.model('cate', cateSchema);
+module.exports = mongoose.model('cate', cateSchema, 'cates');

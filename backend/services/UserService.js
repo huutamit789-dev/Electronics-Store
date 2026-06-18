@@ -4,7 +4,6 @@ const UserRoleRepository = require('../repositories/UserRoleRepository');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('../config/config');
-const debug = require('debug')('app:service:user');
 
 /**
  * UserService handles business logic for user management,
@@ -45,12 +44,11 @@ class UserService {
       await UserRoleRepository.create({
         user_id: newUser._id,
         role: 'user',
-        status: 'attempt'
+        status: 'approved'
       }, { session });
 
       // Commit the transaction if both operations succeed
       await session.commitTransaction();
-      console.log("Transaction successfully completed!");
       
       return {
         insertedId: newUser._id,

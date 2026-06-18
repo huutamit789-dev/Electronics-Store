@@ -27,6 +27,89 @@ class ProductRepository {
       currentPage: pageNum
     };
   }
+  // Find all products grouped by category
+  async findAllGroupedByCategory(page = 1, limit = 5) {
+    const pageNum = parseInt(page);
+    const limitNum = parseInt(limit);
+    const skip = (pageNum - 1) * limitNum;
+
+    const categories = await Product.aggregate([
+      {
+        $group: {
+          _id: '$cate_id'
+        }
+      },
+      {
+        $sort: { _id: 1 }
+      },
+      {
+        $skip: skip
+      },
+      {
+        $limit: limitNum
+      },
+      {
+        $lookup: {
+          from: 'cates',
+          localField: '_id',
+          foreignField: '_id',
+          as: 'categoryData'
+        }
+      },
+      {
+        $lookup: {
+          from: 'products',
+          localField: '_id',
+          foreignField: 'cate_id',
+          as: 'products'
+        }
+      },
+      {
+        $replaceRoot: {
+          newRoot: {
+            $mergeObjects: [
+              { $ifNull: [ { $arrayElemAt: ['$categoryData', 0] }, {} ] },
+              { products: { $slice: ['$products', 5] } }
+            ]
+          }
+        }
+      }
+    ]);
+
+    const totalCategories = (await Product.distinct('cate_id')).length;
+
+    return {
+      categories,
+      total: totalCategories,
+      totalPages: Math.ceil(totalCategories / limitNum),
+      currentPage: pageNum
+    };
+  }
+
+  // Find products by category ID with pagination
+  async findByCategoryId(categoryId, page = 1, limit = 10) {
+    const pageNum = parseInt(page);
+    const limitNum = parseInt(limit);
+    const skip = (pageNum - 1) * limitNum;
+
+    const [products, total] = await Promise.all([
+      Product.find({ cate_id: categoryId })
+        .populate('cate_id')
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limitNum)
+        .lean(),
+      Product.countDocuments({ cate_id: categoryId })
+    ]);
+
+    return {
+      products,
+      total,
+      totalPages: Math.ceil(total / limitNum),
+      currentPage: pageNum
+    };
+  }
+
   // Find product by ID
   async findById(id) {
     return await Product.findById(id).populate('cate_id').lean()

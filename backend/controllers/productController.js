@@ -10,6 +10,22 @@ const getProducts = asyncHandler(async (req, res) => {
 })
 
 /**
+ * @desc Get all products by category (Public)
+ */
+const getAllProducts = asyncHandler(async (req, res) => {
+  const products = await ProductService.getAllProductsByCategory(req.query.page, req.query.limit)
+  res.success(products, 'Products returned successfully')
+})
+
+/**
+ * @desc Get products by category id (Public)
+ */
+const getProductByCategoryId = asyncHandler(async (req, res) => {
+  const products = await ProductService.getProductByCategoryId(req.params.categoryId, req.query.page, req.query.limit)
+  res.success(products, 'Products returned successfully')
+})
+
+/**
  * @desc Get product detail (Public)
  */
 const getProductById = asyncHandler(async (req, res) => {
@@ -42,4 +58,4 @@ const deleteProduct = asyncHandler(async (req, res) => {
   res.success(null, 'Product deleted successfully')
 })
 
-module.exports = { getProducts, getProductById, createProduct, updateProduct, deleteProduct }
+module.exports = { getProducts, getProductById, createProduct, updateProduct, deleteProduct, getAllProducts, getProductByCategoryId }

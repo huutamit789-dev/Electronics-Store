@@ -8,7 +8,6 @@ const { asyncHandler } = require('../middleware/asyncHandler')
  */
 const getOrderHistory = asyncHandler(async (req, res) => {
   const currentUser = req.user; 
-  console.log('Current user  controller:', currentUser); 
   const history = await OrderHistoryService.getOrderHistory(currentUser)
   res.success(history, 'Order history returned successfully')
 })

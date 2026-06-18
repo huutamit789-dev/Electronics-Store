@@ -1,16 +1,2021 @@
---- 2026-06-15T14:32:12.779Z ---
-Request: GET /favicon.ico
+--- 2026-06-17T08:17:18.100Z ---
+Request: POST /api/auth/register
 Status: 404
-Message: Route not found: GET /favicon.ico
-Stack: Error: Route not found: GET /favicon.ico
+Message: Route not found: POST /api/auth/register
+Stack: Error: Route not found: POST /api/auth/register
     at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
     at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
     at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
     at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
     at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
     at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
-    at cors (D:\Project\ElectricStore\backend\node_modules\cors\lib\index.js:188:7)
-    at D:\Project\ElectricStore\backend\node_modules\cors\lib\index.js:224:17
-    at originCallback (D:\Project\ElectricStore\backend\node_modules\cors\lib\index.js:214:15)
-    at D:\Project\ElectricStore\backend\node_modules\cors\lib\index.js:219:13
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T08:17:21.987Z ---
+Request: POST /api/auth/register
+Status: 404
+Message: Route not found: POST /api/auth/register
+Stack: Error: Route not found: POST /api/auth/register
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T08:17:36.697Z ---
+Request: POST /api/auth/register
+Status: 404
+Message: Route not found: POST /api/auth/register
+Stack: Error: Route not found: POST /api/auth/register
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T08:19:46.776Z ---
+Request: POST /api/user
+Status: 404
+Message: Route not found: POST /api/user
+Stack: Error: Route not found: POST /api/user
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T08:20:40.877Z ---
+Request: POST /api/users
+Status: 500
+Message: Registration information is incomplete
+Stack: Error: Registration information is incomplete
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:24:13)
+    at D:\Project\ElectricStore\backend\controllers\userController.js:21:36
+    at D:\Project\ElectricStore\backend\middleware\asyncHandler.js:3:21
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Project\ElectricStore\backend\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Project\ElectricStore\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:295:15
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+
+--- 2026-06-17T08:21:33.869Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:124:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T08:21:33.915Z ---
+Request: POST /api/users
+Status: 500
+Message: Email is already in use
+Stack: Error: Email is already in use
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T10:48:15.219Z ---
+Request: POST /api/users
+Status: 500
+Message: Email is already in use
+Stack: Error: Email is already in use
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T10:48:22.494Z ---
+Request: POST /api/users
+Status: 500
+Message: Email is already in use
+Stack: Error: Email is already in use
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T10:48:33.291Z ---
+Request: POST /api/users
+Status: 500
+Message: Email is already in use
+Stack: Error: Email is already in use
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T10:49:28.796Z ---
+Request: POST /api/users
+Status: 500
+Message: Email is already in use
+Stack: Error: Email is already in use
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T10:49:32.548Z ---
+Request: POST /api/users
+Status: 500
+Message: Email is already in use
+Stack: Error: Email is already in use
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T10:49:49.662Z ---
+Request: POST /api/users
+Status: 500
+Message: Email is already in use
+Stack: Error: Email is already in use
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T10:51:43.543Z ---
+Request: POST /api/users
+Status: 500
+Message: Email is already in use
+Stack: Error: Email is already in use
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T10:53:28.008Z ---
+Request: POST /api/users
+Status: 500
+Message: Email is already in use
+Stack: Error: Email is already in use
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T10:54:40.405Z ---
+Request: POST /api/users
+Status: 500
+Message: Email is already in use
+Stack: Error: Email is already in use
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T10:55:25.796Z ---
+Request: POST /api/users
+Status: 500
+Message: Email is already in use
+Stack: Error: Email is already in use
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T11:03:16.834Z ---
+Request: POST /api/users
+Status: 500
+Message: Email is already in use
+Stack: Error: Email is already in use
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T11:03:32.505Z ---
+Request: POST /api/auth/login
+Status: 404
+Message: Route not found: POST /api/auth/login
+Stack: Error: Route not found: POST /api/auth/login
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:11:22.689Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:11:22.725Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:11:41.906Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:11:41.945Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:13:11.259Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:13:32.531Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:13:39.537Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:13:39.576Z ---
+Request: GET /api/categories
+Status: 401
+Message: Authorization token is required
+Stack: Error: Authorization token is required
+    at authMiddleware (D:\Project\ElectricStore\backend\middleware\authMiddleware.js:11:21)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Project\ElectricStore\backend\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Project\ElectricStore\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:295:15
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at router.handle (D:\Project\ElectricStore\backend\node_modules\router\index.js:186:3)
+
+--- 2026-06-17T14:14:34.289Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:14:34.323Z ---
+Request: GET /api/categories
+Status: 401
+Message: Authorization token is required
+Stack: Error: Authorization token is required
+    at authMiddleware (D:\Project\ElectricStore\backend\middleware\authMiddleware.js:11:21)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Project\ElectricStore\backend\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Project\ElectricStore\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:295:15
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at router.handle (D:\Project\ElectricStore\backend\node_modules\router\index.js:186:3)
+
+--- 2026-06-17T14:14:44.850Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:14:44.876Z ---
+Request: GET /api/categories
+Status: 401
+Message: Authorization token is required
+Stack: Error: Authorization token is required
+    at authMiddleware (D:\Project\ElectricStore\backend\middleware\authMiddleware.js:11:21)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Project\ElectricStore\backend\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Project\ElectricStore\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:295:15
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at router.handle (D:\Project\ElectricStore\backend\node_modules\router\index.js:186:3)
+
+--- 2026-06-17T14:15:10.717Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:15:10.758Z ---
+Request: GET /api/categories
+Status: 401
+Message: Authorization token is required
+Stack: Error: Authorization token is required
+    at authMiddleware (D:\Project\ElectricStore\backend\middleware\authMiddleware.js:11:21)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Project\ElectricStore\backend\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Project\ElectricStore\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:295:15
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at router.handle (D:\Project\ElectricStore\backend\node_modules\router\index.js:186:3)
+
+--- 2026-06-17T14:15:16.843Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:15:16.876Z ---
+Request: GET /api/categories
+Status: 401
+Message: Authorization token is required
+Stack: Error: Authorization token is required
+    at authMiddleware (D:\Project\ElectricStore\backend\middleware\authMiddleware.js:11:21)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Project\ElectricStore\backend\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Project\ElectricStore\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:295:15
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at router.handle (D:\Project\ElectricStore\backend\node_modules\router\index.js:186:3)
+
+--- 2026-06-17T14:18:55.314Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:19:40.866Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:19:40.905Z ---
+Request: GET /api/products
+Status: 403
+Message: Bạn không có quyền truy cập
+Stack: Error: Bạn không có quyền truy cập
+    at ProductService.getAllProducts (D:\Project\ElectricStore\backend\services\ProductService.js:10:19)
+    at D:\Project\ElectricStore\backend\controllers\productController.js:8:41
+    at D:\Project\ElectricStore\backend\middleware\asyncHandler.js:3:21
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Project\ElectricStore\backend\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Project\ElectricStore\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:295:15
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+
+--- 2026-06-17T14:21:39.865Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:21:39.894Z ---
+Request: GET /api/getAllProduct
+Status: 404
+Message: Route not found: GET /api/getAllProduct
+Stack: Error: Route not found: GET /api/getAllProduct
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:24:58.882Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:25:02.153Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:25:02.191Z ---
+Request: GET /api/getAllProducts
+Status: 404
+Message: Route not found: GET /api/getAllProducts
+Stack: Error: Route not found: GET /api/getAllProducts
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:25:30.536Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:27:33.243Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:29:14.741Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:30:27.902Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:30:31.410Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:30:32.265Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:33:07.944Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:37:07.077Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:37:17.855Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T14:41:07.484Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:41:09.654Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:41:11.664Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:41:11.943Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:41:12.954Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:41:14.973Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:41:18.982Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:42:09.194Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:43:03.019Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:43:05.034Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:43:05.297Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:43:10.289Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:43:11.305Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:44:31.022Z ---
+Request: POST /api/users
+Status: 500
+Message: Email is already in use
+Stack: Error: Email is already in use
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T14:44:37.379Z ---
+Request: POST /api/users
+Status: 500
+Message: UserRole validation failed: status: `user` is not a valid enum value for path `status`.
+Stack: ValidationError: UserRole validation failed: status: `user` is not a valid enum value for path `status`.
+    at model.validate (D:\Project\ElectricStore\backend\node_modules\mongoose\lib\document.js:2864:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async model.$__save (D:\Project\ElectricStore\backend\node_modules\mongoose\lib\model.js:398:7)
+    at async maybeTracedSave (D:\Project\ElectricStore\backend\node_modules\mongoose\lib\model.js:674:7)
+    at async model.create (D:\Project\ElectricStore\backend\node_modules\mongoose\lib\model.js:2762:5)
+    at async UserRoleRepository.create (D:\Project\ElectricStore\backend\repositories\UserRoleRepository.js:5:12)
+    at async UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:45:7)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T14:44:46.805Z ---
+Request: POST /api/users
+Status: 500
+Message: Email is already in use
+Stack: Error: Email is already in use
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T14:44:52.915Z ---
+Request: POST /api/users
+Status: 500
+Message: UserRole validation failed: status: `user` is not a valid enum value for path `status`.
+Stack: ValidationError: UserRole validation failed: status: `user` is not a valid enum value for path `status`.
+    at model.validate (D:\Project\ElectricStore\backend\node_modules\mongoose\lib\document.js:2864:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async model.$__save (D:\Project\ElectricStore\backend\node_modules\mongoose\lib\model.js:398:7)
+    at async maybeTracedSave (D:\Project\ElectricStore\backend\node_modules\mongoose\lib\model.js:674:7)
+    at async model.create (D:\Project\ElectricStore\backend\node_modules\mongoose\lib\model.js:2762:5)
+    at async UserRoleRepository.create (D:\Project\ElectricStore\backend\repositories\UserRoleRepository.js:5:12)
+    at async UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:45:7)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T14:47:39.953Z ---
+Request: POST /api/users
+Status: 500
+Message: Email is already in use
+Stack: Error: Email is already in use
+    at UserService.createUser (D:\Project\ElectricStore\backend\services\UserService.js:29:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:21:18
+
+--- 2026-06-17T14:47:59.597Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:48:00.612Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:48:02.624Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T14:48:06.630Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T15:29:35.720Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T15:29:36.740Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T15:29:38.795Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T15:29:42.840Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:23:40.971Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:23:44.000Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:23:46.578Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:23:48.583Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:23:52.598Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:23:54.709Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T20:24:30.465Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:24:31.482Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:24:33.498Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:24:37.507Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:51:48.498Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:51:49.517Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:51:51.527Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:51:52.601Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:51:53.617Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:51:53.864Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:51:54.875Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:51:56.952Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:52:00.981Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:53:49.012Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:53:49.556Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:53:50.589Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:53:52.600Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:53:53.168Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:53:54.204Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:53:56.219Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:54:00.235Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:54:27.711Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:54:28.725Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:54:30.735Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:54:34.744Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:57:37.898Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:57:38.918Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:57:40.923Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T20:57:44.927Z ---
+Request: GET /api/api/products/getAllProduct?page=1&limit=10
+Status: 404
+Message: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+Stack: Error: Route not found: GET /api/api/products/getAllProduct?page=1&limit=10
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-17T21:06:09.312Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:08:49.444Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:08:49.474Z ---
+Request: POST /api/products
+Status: 401
+Message: jwt expired
+Stack: TokenExpiredError: jwt expired
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (D:\Project\DuAn\ElectricStore\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (D:\Project\DuAn\ElectricStore\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at authMiddleware (D:\Project\DuAn\ElectricStore\backend\middleware\authMiddleware.js:16:25)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:295:15
+
+--- 2026-06-17T21:09:04.097Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:09:21.404Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:09:38.857Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:09:38.880Z ---
+Request: POST /api/categories
+Status: 400
+Message: Categories name is required
+Stack: Error: Categories name is required
+    at CategoriesService.createCategories (D:\Project\DuAn\ElectricStore\backend\services\CategoriesService.js:21:21)
+    at D:\Project\DuAn\ElectricStore\backend\controllers\categoriesController.js:21:49
+    at D:\Project\DuAn\ElectricStore\backend\middleware\asyncHandler.js:3:21
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (D:\Project\DuAn\ElectricStore\backend\middleware\authMiddleware.js:28:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+--- 2026-06-17T21:09:57.845Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:09:57.884Z ---
+Request: POST /api/categories
+Status: 400
+Message: Categories name is required
+Stack: Error: Categories name is required
+    at CategoriesService.createCategories (D:\Project\DuAn\ElectricStore\backend\services\CategoriesService.js:21:21)
+    at D:\Project\DuAn\ElectricStore\backend\controllers\categoriesController.js:21:49
+    at D:\Project\DuAn\ElectricStore\backend\middleware\asyncHandler.js:3:21
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (D:\Project\DuAn\ElectricStore\backend\middleware\authMiddleware.js:28:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+--- 2026-06-17T21:11:37.431Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:11:37.457Z ---
+Request: POST /api/products
+Status: 401
+Message: jwt expired
+Stack: TokenExpiredError: jwt expired
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (D:\Project\DuAn\ElectricStore\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (D:\Project\DuAn\ElectricStore\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at authMiddleware (D:\Project\DuAn\ElectricStore\backend\middleware\authMiddleware.js:16:25)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:295:15
+
+--- 2026-06-17T21:11:43.990Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:11:44.031Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:11:52.813Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:11:52.851Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:11:54.511Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:11:54.550Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:14:10.102Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:14:24.725Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:14:24.765Z ---
+Request: POST /api/products
+Status: 401
+Message: jwt expired
+Stack: TokenExpiredError: jwt expired
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (D:\Project\DuAn\ElectricStore\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (D:\Project\DuAn\ElectricStore\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at authMiddleware (D:\Project\DuAn\ElectricStore\backend\middleware\authMiddleware.js:16:25)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:295:15
+
+--- 2026-06-17T21:14:28.391Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:14:28.432Z ---
+Request: POST /api/products
+Status: 500
+Message: name, price, and cate_id are required
+Stack: Error: name, price, and cate_id are required
+    at ProductService.createProduct (D:\Project\DuAn\ElectricStore\backend\services\ProductService.js:30:44)
+    at D:\Project\DuAn\ElectricStore\backend\controllers\productController.js:33:43
+    at D:\Project\DuAn\ElectricStore\backend\middleware\asyncHandler.js:3:21
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (D:\Project\DuAn\ElectricStore\backend\middleware\authMiddleware.js:28:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+--- 2026-06-17T21:15:18.507Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:15:18.530Z ---
+Request: POST /api/products
+Status: 500
+Message: name, price, and cate_id are required
+Stack: Error: name, price, and cate_id are required
+    at ProductService.createProduct (D:\Project\DuAn\ElectricStore\backend\services\ProductService.js:30:44)
+    at D:\Project\DuAn\ElectricStore\backend\controllers\productController.js:33:43
+    at D:\Project\DuAn\ElectricStore\backend\middleware\asyncHandler.js:3:21
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (D:\Project\DuAn\ElectricStore\backend\middleware\authMiddleware.js:28:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+--- 2026-06-17T21:15:56.692Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:16:23.516Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:16:23.557Z ---
+Request: POST /api/products
+Status: 500
+Message: name, price, and cate_id are required
+Stack: Error: name, price, and cate_id are required
+    at ProductService.createProduct (D:\Project\DuAn\ElectricStore\backend\services\ProductService.js:30:44)
+    at D:\Project\DuAn\ElectricStore\backend\controllers\productController.js:33:43
+    at D:\Project\DuAn\ElectricStore\backend\middleware\asyncHandler.js:3:21
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (D:\Project\DuAn\ElectricStore\backend\middleware\authMiddleware.js:28:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+--- 2026-06-17T21:17:01.596Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:17:32.512Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:17:38.967Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:17:45.275Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:17:53.580Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:17:59.283Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:20:43.293Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:21:06.229Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:21:06.267Z ---
+Request: POST /api/categories
+Status: 400
+Message: Categories name is required
+Stack: Error: Categories name is required
+    at CategoriesService.createCategories (D:\Project\DuAn\ElectricStore\backend\services\CategoriesService.js:21:21)
+    at D:\Project\DuAn\ElectricStore\backend\controllers\categoriesController.js:21:49
+    at D:\Project\DuAn\ElectricStore\backend\middleware\asyncHandler.js:3:21
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (D:\Project\DuAn\ElectricStore\backend\middleware\authMiddleware.js:28:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+--- 2026-06-17T21:21:18.054Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:21:24.754Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:21:31.061Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:21:37.394Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:21:42.732Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:21:48.058Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:21:52.999Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:24:25.896Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:24:32.620Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:24:38.261Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:24:44.859Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:24:51.539Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-17T21:25:27.013Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
+
+--- 2026-06-18T02:00:00.205Z ---
+Request: GET /.well-known/appspecific/com.chrome.devtools.json
+Status: 404
+Message: Route not found: GET /.well-known/appspecific/com.chrome.devtools.json
+Stack: Error: Route not found: GET /.well-known/appspecific/com.chrome.devtools.json
+    at notFoundHandler (D:\Project\DuAn\ElectricStore\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:582:12)
+    at next (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:291:5)
+    at responseHandler (D:\Project\DuAn\ElectricStore\backend\middleware\responseHandler.js:10:3)
+    at Layer.handleRequest (D:\Project\DuAn\ElectricStore\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:342:13)
+    at D:\Project\DuAn\ElectricStore\backend\node_modules\router\index.js:297:9
+
+--- 2026-06-18T02:06:48.537Z ---
+Request: POST /api/users/login
+Status: 500
+Message: Invalid authentication credentials
+Stack: Error: Invalid authentication credentials
+    at UserService.verifyPassword (D:\Project\DuAn\ElectricStore\backend\services\UserService.js:123:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
 

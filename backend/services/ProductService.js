@@ -1,19 +1,22 @@
 const ProductRepository = require('../repositories/ProductRepository');
 
 class ProductService {
- // Lấy tất cả sản phẩm (Admin only)
+ // Lấy tất cả sản phẩm (Public)
   async getAllProducts(user, page = 1, limit = 10) {
-    const allowedRoles = ['admin', 'user'];
-  
-  // Kiểm tra: Nếu không có user HOẶC user không có role nằm trong danh sách cho phép
-  if (!user || !allowedRoles.includes(user.role)) {
-    const error = new Error('Bạn không có quyền truy cập');
-    error.status = 403;
-    throw error;
-  }
-  
     return await ProductRepository.findAll(page, limit);
   }
+
+  // Lấy tất cả sản phẩm theo danh mục
+  async getAllProductsByCategory(page = 1, limit = 5) {
+    return await ProductRepository.findAllGroupedByCategory(page, limit);
+  }
+
+  async getProductByCategoryId(categoryId, page = 1, limit = 10) {
+    if (!categoryId) throw new Error('Category ID is required');
+
+    return await ProductRepository.findByCategoryId(categoryId, page, limit);
+  }
+
   // Lấy sản phẩm theo ID (Public)
   async getProductById(id) {
     if (!id) throw new Error('Product ID is required');
