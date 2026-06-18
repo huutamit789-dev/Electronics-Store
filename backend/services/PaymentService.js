@@ -1,1 +1,44 @@
-// Payment Service\n// Handles business logic and validation for payment operations\nconst PaymentRepository = require('../repositories/PaymentRepository')\n\nconst VALID_METHODS = ['cod', 'credit_card', 'momo', 'zalopay']\nconst VALID_STATUSES = ['pending', 'paid', 'failed', 'refunded']\n\nclass PaymentService {\n  // Get all payments\n  async getAllPayments() {\n    return await PaymentRepository.findAll()\n  }\n\n  // Create a new payment\n  async createPayment(paymentData) {\n    const { order_id, payment_method } = paymentData\n\n    // Validation\n    if (!order_id || !payment_method) {\n      const error = new Error('order_id and payment_method are required')\n      error.status = 400\n      throw error\n    }\n\n    if (!VALID_METHODS.includes(payment_method)) {\n      const error = new Error(`Payment method must be one of: ${VALID_METHODS.join(', ')}`)\n      error.status = 400\n      throw error\n    }\n\n    const newPayment = await PaymentRepository.create(paymentData)\n    return newPayment\n  }\n}\n\nmodule.exports = new PaymentService()
+const PaymentRepository = require('../repositories/PaymentRepository');
+
+const VALID_METHODS = ['cod', 'credit_card', 'momo', 'zalopay'];
+
+class PaymentService {
+  // Lấy danh sách tất cả các thanh toán
+  async getAllPayments(user, page = 1, limit = 10) {
+    // Kiểm tra quyền truy cập
+    const allowedRoles = ['admin'];
+    if (!user || !allowedRoles.includes(user.role)) {
+      const error = new Error('Bạn không có quyền truy cập');
+      error.status = 403;
+      throw error;
+    }
+
+    return await PaymentRepository.findAll(page, limit);
+  }
+
+  // Tạo một giao dịch thanh toán mới
+  async createPayment(user, paymentData) {
+    // Kiểm tra quyền truy cập
+    const allowedRoles = ['admin'];
+    if (!user || !allowedRoles.includes(user.role)) {
+      const error = new Error('Bạn không có quyền truy cập');
+      error.status = 403;
+      throw error;
+    }
+
+    const { order_id, payment_method } = paymentData;
+
+    // Validation cơ bản
+    if (!order_id || !payment_method) {
+      throw new Error('order_id và payment_method là bắt buộc');
+    }
+
+    if (!VALID_METHODS.includes(payment_method)) {
+      throw new Error(`Phương thức thanh toán không hợp lệ. Hỗ trợ: ${VALID_METHODS.join(', ')}`);
+    }
+
+    return await PaymentRepository.create(paymentData);
+  }
+}
+
+module.exports = new PaymentService();

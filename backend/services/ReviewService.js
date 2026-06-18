@@ -1,33 +1,32 @@
-// Review Service
-// Handles business logic and validation for review operations
-const ReviewRepository = require('../repositories/ReviewRepository')
+const ReviewRepository = require('../repositories/ReviewRepository');
 
 class ReviewService {
-  // Get all reviews
-  async getAllReviews() {
-    return await ReviewRepository.findAll()
+  // Lấy danh sách tất cả các đánh giá
+  async getAllReviews(user, page = 1, limit = 10) {
+    const allowedRoles = ['admin', 'user'];
+    if (!user || !allowedRoles.includes(user.role)) {
+      const error = new Error('Bạn không có quyền truy cập');
+      error.status = 403;
+      throw error;
+    }
+    return await ReviewRepository.findAll(page, limit);
   }
 
-  // Create a new review
-  async createReview(reviewData) {
-    const { user_id, product_id, rating } = reviewData
+  // Tạo một đánh giá mới
+  async createReview(user, reviewData) {
+    const { user_id, product_id, rating } = reviewData;
 
     // Validation
     if (!user_id || !product_id || !rating) {
-      const error = new Error('user_id, product_id, and rating are required')
-      error.status = 400
-      throw error
+      throw new Error('user_id, product_id, và rating là bắt buộc');
     }
 
     if (rating < 1 || rating > 5) {
-      const error = new Error('Rating must be between 1 and 5')
-      error.status = 400
-      throw error
+      throw new Error('Rating phải nằm trong khoảng từ 1 đến 5');
     }
 
-    const newReview = await ReviewRepository.create(reviewData)
-    return newReview
+    return await ReviewRepository.create(reviewData);
   }
 }
 
-module.exports = new ReviewService()
+module.exports = new ReviewService();

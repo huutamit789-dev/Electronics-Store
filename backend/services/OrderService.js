@@ -1,66 +1,58 @@
-// Order Service
-// Handles business logic and validation for order operations
-const OrderRepository = require('../repositories/OrderRepository')
+const OrderRepository = require('../repositories/OrderRepository');
 
-const VALID_STATUSES = ['pending', 'completed', 'cancelled']
+const VALID_STATUSES = ['pending', 'completed', 'cancelled'];
 
 class OrderService {
-  // Get all orders
-  async getAllOrders() {
-    return await OrderRepository.findAll()
+  async getAllOrders(page = 1, limit = 10) {
+    return await OrderRepository.findAll(page, limit);
   }
 
-  // Create a new order
+  async getOrderById(id) {
+    if (!id) throw new Error('Order ID is required');
+
+    const order = await OrderRepository.findById(id);
+    if (!order) throw new Error('Order not found');
+    
+    return order;
+  }
+
   async createOrder(orderData) {
-    const { user_id, items, total_price } = orderData
+    const { user_id, items, total_price } = orderData;
 
     // Validation
-    if (!user_id || !items || !total_price) {
-      const error = new Error('user_id, items, and total_price are required')
-      error.status = 400
-      throw error
-    }
+    if (!user_id || !items || !total_price) throw new Error('Thông tin đơn hàng không đầy đủ');
+    if (!Array.isArray(items) || items.length === 0) throw new Error('Items phải là mảng không rỗng');
+    if (total_price <= 0) throw new Error('Tổng tiền phải > 0');
 
-    if (!Array.isArray(items) || items.length === 0) {
-      const error = new Error('items must be a non-empty array')
-      error.status = 400
-      throw error
-    }
-
-    if (total_price <= 0) {
-      const error = new Error('total_price must be greater than 0')
-      error.status = 400
-      throw error
-    }
-
-    const newOrder = await OrderRepository.create(orderData)
-    return newOrder
+    return await OrderRepository.create(orderData);
   }
 
-  // Update order status
   async updateOrderStatus(id, status) {
-    // Validation
-    if (!id || !status) {
-      const error = new Error('Order ID and status are required')
-      error.status = 400
-      throw error
-    }
-
+    if (!id || !status) throw new Error('Thiếu thông tin cập nhật');
     if (!VALID_STATUSES.includes(status)) {
-      const error = new Error(`Status must be one of: ${VALID_STATUSES.join(', ')}`)
-      error.status = 400
-      throw error
+      throw new Error(`Status không hợp lệ. Chỉ chấp nhận: ${VALID_STATUSES.join(', ')}`);
     }
 
-    const updated = await OrderRepository.updateStatus(id, status)
-    if (!updated) {
-      const error = new Error('Order not found')
-      error.status = 404
-      throw error
-    }
-
-    return updated
+    const updated = await OrderRepository.updateStatus(id, status);
+    if (!updated) throw new Error('Không tìm thấy đơn hàng để cập nhật');
+    
+    return updated;
   }
-}
 
-module.exports = new OrderService()
+    async deleteOrder(currentUser, orderIdToDelete) {
+        // 1. Kiểm tra quyền Admin
+        if (!currentUser || currentUser.role !== 'admin') {
+          const error = new Error('Bạn không có quyền thực hiện hành động này');
+          error.status = 403;
+          throw error;
+        }
+        // 3. Thực hiện xóa
+        const deletedOrder = await OrderRepository.delete(orderIdToDelete);
+        if (!deletedOrder) {
+          const error = new Error('Đơn hàng không tồn tại');
+          error.status = 404;
+          throw error;
+        }
+}
+}
+module.exports = new OrderService();

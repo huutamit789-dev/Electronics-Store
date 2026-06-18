@@ -1,12 +1,32 @@
 // User Repository
 // Handles all database operations for user data
-const User = require('../models/User')
+const User = require('../models/UserModel')
 
 class UserRepository {
-  // Find all users (exclude password)
-  async findAll() {
-    return await User.find({}, { password: 0 }).lean()
+  // Find all users (paginated)
+  async findAll(page = 1, limit = 10) {
+    const pageNum = parseInt(page);
+    const limitNum = parseInt(limit);
+    const skip = (pageNum - 1) * limitNum;
+
+    // Sử dụng Promise.all để chạy song song 2 truy vấn, giúp tăng tốc độ
+    const [users, total] = await Promise.all([
+      User.find({}, { password: 0 }) // Loại bỏ mật khẩu
+          .skip(skip)
+          .limit(limitNum)
+          .sort({ createdAt: -1 }) 
+          .lean(),
+      User.countDocuments() 
+    ]);
+
+    return {
+      users,
+      total,
+      totalPages: Math.ceil(total / limitNum),
+      currentPage: pageNum
+    };
   }
+
 
   // Find user by email
   async findByEmail(email) {

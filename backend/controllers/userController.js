@@ -1,24 +1,63 @@
-// User Controller
-// Handles HTTP requests and responses for user operations
-// Delegates business logic to UserService
 const UserService = require('../services/UserService')
+const { asyncHandler } = require('../middleware/asyncHandler')
 
-async function getUsers(req, res, next) {
-  try {
-    const users = await UserService.getAllUsers()
-    res.json(users)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Get all users without password hashes.
+ * @route GET /users
+ * @access Public
+ */
+const getUsers = asyncHandler(async (req, res) => {
+  const currentUser = req.user; 
+  const users = await UserService.getAllUsers(currentUser);
+  
+  res.success(users, 'Users returned successfully');
+});
+/**
+ * @desc Create a new user account.
+ * @route POST /users
+ * @access Public
+ */
+const createUser = asyncHandler(async (req, res) => {
+  const result = await UserService.createUser(req.body)
+  res.success(result, 'User created successfully', 201)
+})
 
-async function createUser(req, res, next) {
-  try {
-    const result = await UserService.createUser(req.body)
-    res.status(201).json(result)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Login with email and password, then return a JWT.
+ * @route POST /users/login
+ * @access Public
+ */
+const loginUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body
+  const result = await UserService.verifyPassword(email, password)
+  res.success(result, 'Login successful')
+})
+/**
+ * @desc Delete a user by ID.
+ * @route DELETE /users/:id
+ */
+const deleteUser = asyncHandler(async (req, res) => {
+  const currentUser = req.user; // Lấy từ authMiddleware
+  const userIdToDelete = req.params.id;
 
-module.exports = { getUsers, createUser }
+  const result = await UserService.deleteUser(currentUser, userIdToDelete);
+  
+  res.success(result, 'User deleted successfully');
+});
+
+/**
+ * @desc Update a user by ID.
+ * @route PUT /users/:id
+ */
+const updateUser = asyncHandler(async (req, res) => {
+  const currentUser = req.user; 
+  const userIdToUpdate = req.params.id;
+  const userData = req.body;
+
+  const result = await UserService.updateUser(currentUser, userIdToUpdate, userData);
+
+  res.success(result, 'User updated successfully');
+});
+
+
+module.exports = { getUsers, createUser, loginUser, deleteUser, updateUser }

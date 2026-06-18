@@ -1,91 +1,139 @@
-// User Service
-// Handles business logic and validation for user operations
-const UserRepository = require('../repositories/UserRepository')
-const bcrypt = require('bcrypt')
+const mongoose = require('mongoose');
+const UserRepository = require('../repositories/UserRepository');
+const UserRoleRepository = require('../repositories/UserRoleRepository');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const config = require('../config/config');
 
-const SALT_ROUNDS = 10
-
+/**
+ * UserService handles business logic for user management,
+ * including authentication, registration, and administrative tasks.
+ */
 class UserService {
-  // Get all users
-  async getAllUsers() {
-    return await UserRepository.findAll()
-  }
-
-  // Create a new user
+  
+  /**
+   * Registers a new user and initializes their role record in the database.
+   * Uses a transaction to ensure data consistency between User and UserRole collections.
+   */
   async createUser(userData) {
-    const { username, email, password, phonenumber } = userData
+    const { username, email, password, phonenumber } = userData;
 
-    // Validation
+    // Validate required fields
     if (!username || !email || !password || !phonenumber) {
-      const error = new Error('username, email, password and phonenumber are required')
-      error.status = 400
-      throw error
+      throw new Error('Registration information is incomplete');
     }
 
-    // Check if email already exists
-    const existing = await UserRepository.findByEmail(email)
-    if (existing) {
-      const error = new Error('Email already in use')
-      error.status = 409
-      throw error
-    }
+    // Check if the user already exists
+    const existing = await UserRepository.findByEmail(email);
+    if (existing) throw new Error('Email is already in use');
 
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS)
+    // Hash password before saving to the database
+    const hashedPassword = await bcrypt.hash(password, config.SALT_ROUNDS || 10);
 
-    // Create user
-    const newUser = await UserRepository.create({
-      username,
-      email,
-      password: hashedPassword,
-      phonenumber
-    })
+    // Start a Mongoose session for atomicity
+    const session = await mongoose.startSession();
+    session.startTransaction();
 
-    // Return user without password
-    return {
-      insertedId: newUser._id,
-      user: {
-        username: newUser.username,
-        email: newUser.email,
-        phonenumber: newUser.phonenumber
-      }
+    try {
+      // 1. Create the user document
+      const newUser = await UserRepository.create({
+        username, email, password: hashedPassword, phonenumber
+      }, { session });
+
+      // 2. Initialize the default role for the new user
+      await UserRoleRepository.create({
+        user_id: newUser._id,
+        role: 'user',
+        status: 'approved'
+      }, { session });
+
+      // Commit the transaction if both operations succeed
+      await session.commitTransaction();
+      
+      return {
+        insertedId: newUser._id,
+        user: { username: newUser.username, email: newUser.email }
+      };
+    } catch (error) {
+      // Rollback changes if any operation fails
+      console.error("Transaction error:", error);
+      await session.abortTransaction();
+      throw error;
+    } finally {
+      session.endSession();
     }
   }
 
-  // Verify user password (for login)
+  /**
+   * Deletes a user and their associated role record.
+   * Restricted to admin access only.
+   */
+  async deleteUser(currentUser, userIdToDelete) {
+    // Permission check: ensure only admins can delete users
+    if (!currentUser || currentUser.role !== 'admin') {
+      const error = new Error('You do not have permission to perform this action');
+      error.status = 403;
+      throw error;
+    }
+
+    // Prevent administrators from deleting their own accounts
+    if (currentUser._id.toString() === userIdToDelete) {
+      const error = new Error('You cannot delete your own account');
+      error.status = 400;
+      throw error;
+    }
+
+    const session = await mongoose.startSession();
+    session.startTransaction();
+
+    try {
+      // 1. Delete user from the main collection
+      const deletedUser = await UserRepository.delete(userIdToDelete, { session });
+      if (!deletedUser) throw new Error('User not found');
+
+      // 2. Remove the associated role record to avoid orphaned data
+      await UserRoleRepository.deleteByUserId(userIdToDelete, { session });
+
+      await session.commitTransaction();
+    } catch (error) {
+      await session.abortTransaction();
+      throw error;
+    } finally {
+      session.endSession();
+    }
+  }
+
+  /**
+   * Fetches all users with pagination. Admin-only access.
+   */
+  async getAllUsers(currentUser, page = 1, limit = 10) {
+    if (!currentUser || currentUser.role !== 'admin') throw new Error('Access denied');
+    return await UserRepository.findAll(page, limit);
+  }
+
+  /**
+   * Authenticates user credentials and generates a JWT token.
+   */
   async verifyPassword(email, password) {
-    const user = await UserRepository.findByEmail(email)
-    if (!user) {
-      const error = new Error('User not found')
-      error.status = 404
-      throw error
+    const user = await UserRepository.findByEmail(email);
+    
+    // Verify user existence and password validity
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      throw new Error('Invalid authentication credentials');
     }
 
-    const isMatch = await bcrypt.compare(password, user.password)
-    if (!isMatch) {
-      const error = new Error('Invalid password')
-      error.status = 401
-      throw error
-    }
-
-    return {
-      id: user._id,
-      username: user.username,
-      email: user.email,
-      phonenumber: user.phonenumber
-    }
-  }
-
-  // Get user by ID
-  async getUserById(id) {
-    const user = await UserRepository.findById(id)
-    if (!user) {
-      const error = new Error('User not found')
-      error.status = 404
-      throw error
-    }
-    return user
+    // Sign the JWT
+    const token = jwt.sign(
+      { id: user._id, email: user.email }, 
+      config.JWT_SECRET, 
+      { expiresIn: config.JWT_EXPIRES_IN }
+    );
+    
+    return { 
+      token, 
+      user: { id: user._id, username: user.username } 
+    };
   }
 }
 
-module.exports = new UserService()
+module.exports = new UserService();

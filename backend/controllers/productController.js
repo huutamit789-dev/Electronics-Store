@@ -1,44 +1,61 @@
-// Product Controller
-// Handles HTTP requests and responses for product operations
-// Delegates business logic to ProductService
 const ProductService = require('../services/ProductService')
+const { asyncHandler } = require('../middleware/asyncHandler')
 
-async function getProducts(req, res, next) {
-  try {
-    const products = await ProductService.getAllProducts()
-    res.json(products)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Get all products (Public)
+ */
+const getProducts = asyncHandler(async (req, res) => {
+  const products = await ProductService.getAllProducts(req.user, req.query.page, req.query.limit)
+  res.success(products, 'Products returned successfully')
+})
 
-async function createProduct(req, res, next) {
-  try {
-    const newProduct = await ProductService.createProduct(req.body)
-    res.status(201).json(newProduct)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Get all products by category (Public)
+ */
+const getAllProducts = asyncHandler(async (req, res) => {
+  const products = await ProductService.getAllProductsByCategory(req.query.page, req.query.limit)
+  res.success(products, 'Products returned successfully')
+})
 
-async function updateProduct(req, res, next) {
-  try {
-    const { id } = req.params
-    const updated = await ProductService.updateProduct(id, req.body)
-    res.json(updated)
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Get products by category id (Public)
+ */
+const getProductByCategoryId = asyncHandler(async (req, res) => {
+  const products = await ProductService.getProductByCategoryId(req.params.categoryId, req.query.page, req.query.limit)
+  res.success(products, 'Products returned successfully')
+})
 
-async function deleteProduct(req, res, next) {
-  try {
-    const { id } = req.params
-    await ProductService.deleteProduct(id)
-    res.json({ message: 'Product deleted' })
-  } catch (err) {
-    next(err)
-  }
-}
+/**
+ * @desc Get product detail (Public)
+ */
+const getProductById = asyncHandler(async (req, res) => {
+  const product = await ProductService.getProductById(req.params.id)
+  res.success(product, 'Product returned successfully')
+})
 
-module.exports = { getProducts, createProduct, updateProduct, deleteProduct }
+/**
+ * @desc Create a new product (Admin Only)
+ */
+const createProduct = asyncHandler(async (req, res) => {
+  // Truyền req.user vào để Service kiểm tra quyền
+  const newProduct = await ProductService.createProduct(req.user, req.body)
+  res.success(newProduct, 'Product created successfully', 201)
+})
+
+/**
+ * @desc Update a product (Admin Only)
+ */
+const updateProduct = asyncHandler(async (req, res) => {
+  const updated = await ProductService.updateProduct(req.user, req.params.id, req.body)
+  res.success(updated, 'Product updated successfully')
+})
+
+/**
+ * @desc Delete a product (Admin Only)
+ */
+const deleteProduct = asyncHandler(async (req, res) => {
+  await ProductService.deleteProduct(req.user, req.params.id)
+  res.success(null, 'Product deleted successfully')
+})
+
+module.exports = { getProducts, getProductById, createProduct, updateProduct, deleteProduct, getAllProducts, getProductByCategoryId }

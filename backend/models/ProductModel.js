@@ -6,10 +6,10 @@ const productSchema = new mongoose.Schema({
   price: { type: Number, required: true },
   stock_quantity: { type: Number, default: 0 },
   image_url: String,
-  // Thêm liên kết tới Category
-  category_id: { 
+  // Thêm liên kết tới cate
+  cate_id: { 
     type: mongoose.Schema.Types.ObjectId, 
-    ref: 'Category', 
+    ref: 'cate', 
     required: true 
   }
 });

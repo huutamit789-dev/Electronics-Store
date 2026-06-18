@@ -1,10 +1,10 @@
 // OrderHistory Routes
 const express = require('express')
-const { getOrderHistory, addOrderHistory } = require('../controllers/orderHistoryController')
+const { getOrderHistory } = require('../controllers/orderHistoryController')
+const { authMiddleware } = require('../middleware/authMiddleware')
 
 const router = express.Router()
 
-router.get('/', getOrderHistory)
-router.post('/', addOrderHistory)
+router.get('/', authMiddleware, getOrderHistory)
 
 module.exports = router

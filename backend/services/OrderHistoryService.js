@@ -1,27 +1,18 @@
-// OrderHistory Service
-// Handles business logic and validation for order history operations
-const OrderHistoryRepository = require('../repositories/OrderHistoryRepository')
+const OrderHistoryRepository = require('../repositories/OrderHistoryRepository');
 
 class OrderHistoryService {
-  // Get all order history entries
-  async getAllOrderHistory() {
-    return await OrderHistoryRepository.findAll()
-  }
-
-  // Create a new order history entry
-  async addOrderHistory(historyData) {
-    const { order_id, new_status, old_status } = historyData
-
-    // Validation
-    if (!order_id || !new_status) {
-      const error = new Error('order_id and new_status are required')
-      error.status = 400
-      throw error
+  // Truyền user vào hàm để kiểm tra quyền
+  async getOrderHistory(user, page = 1, limit = 10) {
+    const allowedRoles = ['admin'];
+    if (!user || !allowedRoles.includes(user.role)) {
+      const error = new Error('Bạn không có quyền truy cập');
+      error.status = 403;
+      throw error;
     }
-
-    const newHistory = await OrderHistoryRepository.create(historyData)
-    return newHistory
+    if (user.role === 'admin') {
+      return await OrderHistoryRepository.findAll(page, limit);
+    }
   }
 }
 
-module.exports = new OrderHistoryService()
+module.exports = new OrderHistoryService();

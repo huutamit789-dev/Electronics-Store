@@ -1,10 +1,12 @@
 // Review Routes
 const express = require('express')
-const { getReviews, createReview } = require('../controllers/reviewController')
+const { getReviews, createReview, updateReview, deleteReview } = require('../controllers/reviewController')
+const { authMiddleware } = require('../middleware/authMiddleware')
 
 const router = express.Router()
 
 router.get('/', getReviews)
-router.post('/', createReview)
-
+router.post('/', authMiddleware, createReview)
+router.put('/:id/status', authMiddleware, updateReview)
+router.delete('/:id', authMiddleware, deleteReview) 
 module.exports = router
