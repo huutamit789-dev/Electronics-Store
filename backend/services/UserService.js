@@ -18,14 +18,24 @@ class UserService {
   async createUser(userData) {
     const { username, email, password, phonenumber } = userData;
 
-    // Validate required fields
-    if (!username || !email || !password || !phonenumber) {
-      throw new Error('Registration information is incomplete');
+    // Validate required fields: username, password, phonenumber are required. Email is optional.
+    if (!username || !password || !phonenumber) {
+      throw new Error('Registration information is incomplete: username, password, and phonenumber are required.');
     }
 
-    // Check if the user already exists
-    const existing = await UserRepository.findByEmail(email);
-    if (existing) throw new Error('Email is already in use');
+    // Check if the username already exists
+    const existingByUsername = await UserRepository.findByUsername(username);
+    if (existingByUsername) {
+      throw new Error('Username is already in use.');
+    }
+
+    // If email is provided, check if it's already in use
+    if (email) {
+      const existingByEmail = await UserRepository.findByEmail(email);
+      if (existingByEmail) {
+        throw new Error('Email is already in use.');
+      }
+    }
 
     // Hash password before saving to the database
     const hashedPassword = await bcrypt.hash(password, config.SALT_ROUNDS || 10);
@@ -52,7 +62,7 @@ class UserService {
       
       return {
         insertedId: newUser._id,
-        user: { username: newUser.username, email: newUser.email }
+        user: { username: newUser.username, email: newUser.email } // email might be null/undefined here
       };
     } catch (error) {
       // Rollback changes if any operation fails
@@ -112,11 +122,52 @@ class UserService {
   }
 
   /**
-   * Authenticates user credentials and generates a JWT token.
+   * Updates user profile and admin-managed fields.
+   * Restricted to admin access only.
    */
-  async verifyPassword(email, password) {
-    const user = await UserRepository.findByEmail(email);
+  async updateUser(currentUser, userIdToUpdate, userData) {
+    if (!currentUser || currentUser.role !== 'admin') {
+      const error = new Error('You do not have permission to perform this action');
+      error.status = 403;
+      throw error;
+    }
+
+    if (!userIdToUpdate) {
+      const error = new Error('User ID is required');
+      error.status = 400;
+      throw error;
+    }
+
+    const { username, email, phonenumber, role, status } = userData;
+    const updatedUser = await UserRepository.update(userIdToUpdate, {
+      username,
+      email, // email is now optional
+      phonenumber,
+      role,
+      status
+    });
+
+    if (!updatedUser) {
+      const error = new Error('User not found');
+      error.status = 404;
+      throw error;
+    }
+
+    return updatedUser;
+  }
+
+  /**
+   * Authenticates user credentials and generates a JWT token.
+   * Can log in using either username or email.
+   */
+  async verifyPassword(identifier, password) { // Changed email to identifier
+    let user = await UserRepository.findByUsername(identifier);
     
+    // If not found by username, try finding by email
+    if (!user) {
+      user = await UserRepository.findByEmail(identifier);
+    }
+
     // Verify user existence and password validity
     if (!user || !(await bcrypt.compare(password, user.password))) {
       throw new Error('Invalid authentication credentials');
@@ -124,14 +175,14 @@ class UserService {
 
     // Sign the JWT
     const token = jwt.sign(
-      { id: user._id, email: user.email }, 
+      { id: user._id, username: user.username }, // Changed payload to use username
       config.JWT_SECRET, 
       { expiresIn: config.JWT_EXPIRES_IN }
     );
     
     return { 
       token, 
-      user: { id: user._id, username: user.username } 
+      user: { id: user._id, username: user.username, email: user.email } // Include email if present
     };
   }
 }

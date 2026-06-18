@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true },
-  email: { type: String, required: true, unique: true }, // Nên thêm unique
+  username: { type: String, required: true, unique: true }, // Thêm unique: true cho username
+  email: { type: String, unique: true, sparse: true }, // email không còn required, thêm sparse: true
   password: { type: String, required: true },
   phonenumber: { type: String, required: true },
   

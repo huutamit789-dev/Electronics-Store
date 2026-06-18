@@ -8,7 +8,7 @@ const { asyncHandler } = require('../middleware/asyncHandler')
  */
 const getUsers = asyncHandler(async (req, res) => {
   const currentUser = req.user; 
-  const users = await UserService.getAllUsers(currentUser);
+  const users = await UserService.getAllUsers(currentUser, req.query.page, req.query.limit);
   
   res.success(users, 'Users returned successfully');
 });

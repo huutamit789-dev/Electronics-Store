@@ -27,31 +27,35 @@ class UserRepository {
     };
   }
 
+  // Find user by username
+  async findByUsername(username) {
+    return await User.findOne({ username });
+  }
 
   // Find user by email
   async findByEmail(email) {
-    return await User.findOne({ email })
+    return await User.findOne({ email });
   }
 
   // Find user by ID
   async findById(id) {
-    return await User.findById(id, { password: 0 }).lean()
+    return await User.findById(id, { password: 0 }).lean();
   }
 
   // Create a new user
-  async create(userData) {
-    const user = new User(userData)
-    return await user.save()
+  async create(userData, options = {}) { // Thêm options để hỗ trợ session
+    const user = new User(userData);
+    return await user.save(options);
   }
 
   // Update user
-  async update(id, userData) {
-    return await User.findByIdAndUpdate(id, userData, { new: true, projection: { password: 0 } })
+  async update(id, userData, options = {}) { // Thêm options để hỗ trợ session
+    return await User.findByIdAndUpdate(id, userData, { new: true, projection: { password: 0 }, ...options });
   }
 
   // Delete user
-  async delete(id) {
-    return await User.findByIdAndDelete(id)
+  async delete(id, options = {}) { // Thêm options để hỗ trợ session
+    return await User.findByIdAndDelete(id, options);
   }
 }
 
