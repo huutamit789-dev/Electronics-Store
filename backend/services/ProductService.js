@@ -41,13 +41,19 @@ class ProductService {
 
   // Cập nhật sản phẩm (Admin only)
   async updateProduct(user, id, productData) {
-    if (!user || user.role !== 'admin' || user.role !== 'user') throw new Error('Bạn không có quyền thực hiện tác vụ này');
+    // 1. Kiểm tra quyền hạn
+    if (!user || user.role !== 'admin') {
+      throw new Error('Bạn không có quyền thực hiện tác vụ này');
+    }
     if (!id) throw new Error('Product ID is required');
+    if (!productData) throw new Error('Product data is required');
+    const updatedProduct = await ProductRepository.update(id, productData);
 
-    const updated = await ProductRepository.update(id, productData);
-    if (!updated) throw new Error('Product not found');
-    
-    return updated;
+    if (!updatedProduct) {
+      throw new Error('Product not found or update failed');
+    }
+
+    return updatedProduct;
   }
 
   // Xóa sản phẩm (Admin only)
