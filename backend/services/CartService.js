@@ -8,9 +8,10 @@ class CartService {
     return cart || { user_id, items: [] };
   }
 
-  async addToCart(user_id, product_id, quantity) {
-    if (!user_id || !product_id || !quantity) throw new Error('Thiếu thông tin bắt buộc');
+  async addToCart(user_id, product_id, quantity, price) { // Added 'price' parameter
+    if (!user_id || !product_id || !quantity || price === undefined) throw new Error('Thiếu thông tin bắt buộc'); // Added price check
     if (quantity <= 0) throw new Error('Số lượng phải > 0');
+    if (price < 0) throw new Error('Giá không hợp lệ'); // Optional: Add price validation
 
     let cart = await CartRepository.findByUserIdFull(user_id);
     if (!cart) cart = await CartRepository.create(user_id);
@@ -18,8 +19,10 @@ class CartService {
     const existingItem = cart.items.find(item => item.product_id.toString() === product_id);
     if (existingItem) {
       existingItem.quantity += quantity;
+      // Optionally update price if it can change, or keep the original price
+      // existingItem.price = price; 
     } else {
-      cart.items.push({ product_id, quantity });
+      cart.items.push({ product_id, quantity, price }); // Added 'price' to the new item
     }
 
     const updatedCart = await CartRepository.update(cart);
