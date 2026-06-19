@@ -18,18 +18,18 @@ class UserService {
   async createUser(userData) {
     const { username, email, password, phonenumber } = userData;
 
-    // Validate required fields: username, password, phonenumber are required. Email is optional.
+    // 1. Chỉ validate các trường bắt buộc cơ bản
     if (!username || !password || !phonenumber) {
-      throw new Error('Registration information is incomplete: username, password, and phonenumber are required.');
+      throw new Error('Username, password, and phonenumber are required.');
     }
 
-    // Check if the username already exists
+    // 2. Validate trùng lặp Username
     const existingByUsername = await UserRepository.findByUsername(username);
     if (existingByUsername) {
       throw new Error('Username is already in use.');
     }
 
-    // If email is provided, check if it's already in use
+    // 3. Validate trùng lặp Email (nếu người dùng có nhập email)
     if (email) {
       const existingByEmail = await UserRepository.findByEmail(email);
       if (existingByEmail) {
@@ -37,43 +37,27 @@ class UserService {
       }
     }
 
-    // Hash password before saving to the database
-    const hashedPassword = await bcrypt.hash(password, config.SALT_ROUNDS || 10);
+    // 4. Hash mật khẩu
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Start a Mongoose session for atomicity
-    const session = await mongoose.startSession();
-    session.startTransaction();
+    // 5. Tạo user (không cần transaction phức tạp nếu bạn thấy rắc rối)
+    // Nhưng vẫn nên dùng để đảm bảo dữ liệu đồng bộ
+    const newUser = await UserRepository.create({
+      username, email, password: hashedPassword, phonenumber
+    });
 
-    try {
-      // 1. Create the user document
-      const newUser = await UserRepository.create({
-        username, email, password: hashedPassword, phonenumber
-      }, { session });
+    // 6. Tạo role mặc định
+    await UserRoleRepository.create({
+      user_id: newUser._id,
+      role: 'user',
+      status: 'approved'
+    });
 
-      // 2. Initialize the default role for the new user
-      await UserRoleRepository.create({
-        user_id: newUser._id,
-        role: 'user',
-        status: 'approved'
-      }, { session });
-
-      // Commit the transaction if both operations succeed
-      await session.commitTransaction();
-      
-      return {
-        insertedId: newUser._id,
-        user: { username: newUser.username, email: newUser.email } // email might be null/undefined here
-      };
-    } catch (error) {
-      // Rollback changes if any operation fails
-      console.error("Transaction error:", error);
-      await session.abortTransaction();
-      throw error;
-    } finally {
-      session.endSession();
-    }
+    return {
+      insertedId: newUser._id,
+      user: { username: newUser.username, email: newUser.email }
+    };
   }
-
   /**
    * Deletes a user and their associated role record.
    * Restricted to admin access only.
@@ -160,29 +144,31 @@ class UserService {
    * Authenticates user credentials and generates a JWT token.
    * Can log in using either username or email.
    */
-  async verifyPassword(identifier, password) { // Changed email to identifier
-    let user = await UserRepository.findByUsername(identifier);
-    
-    // If not found by username, try finding by email
-    if (!user) {
-      user = await UserRepository.findByEmail(identifier);
-    }
+  async verifyPassword(username, password) {
+    // 1. Chỉ tìm bằng username
+    const user = await UserRepository.findByUsername(username);
 
-    // Verify user existence and password validity
-    if (!user || !(await bcrypt.compare(password, user.password))) {
+    // 2. Nếu không thấy user hoặc mật khẩu sai
+    const isMatch = user ? await bcrypt.compare(password, user.password) : false;
+
+    if (!user || !isMatch) {
       throw new Error('Invalid authentication credentials');
     }
 
-    // Sign the JWT
+    // 3. Lấy role
+    const userRoleRecord = await UserRoleRepository.findByUserId(user._id);
+    const role = userRoleRecord ? userRoleRecord.role : 'user';
+
+    // 4. Tạo token
     const token = jwt.sign(
-      { id: user._id, username: user.username }, // Changed payload to use username
-      config.JWT_SECRET, 
-      { expiresIn: config.JWT_EXPIRES_IN }
+        { id: user._id, username: user.username, role: role },
+        config.JWT_SECRET,
+        { expiresIn: config.JWT_EXPIRES_IN }
     );
-    
-    return { 
-      token, 
-      user: { id: user._id, username: user.username, email: user.email } // Include email if present
+
+    return {
+      token,
+      user: { id: user._id, username: user.username, role: role }
     };
   }
 }

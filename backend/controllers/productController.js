@@ -13,7 +13,7 @@ const getProducts = asyncHandler(async (req, res) => {
  * @desc Get all products by category (Public)
  */
 const getAllProducts = asyncHandler(async (req, res) => {
-  const products = await ProductService.getAllProductsByCategory(req.query.page, req.query.limit)
+  const products = await ProductService.getAllProducts(req.user, req.query.page, req.query.limit)
   res.success(products, 'Products returned successfully')
 })
 

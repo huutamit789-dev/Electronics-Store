@@ -28,10 +28,15 @@ const createUser = asyncHandler(async (req, res) => {
  * @access Public
  */
 const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body
-  const result = await UserService.verifyPassword(email, password)
-  res.success(result, 'Login successful')
-})
+  const { username, password } = req.body; // Bắt buộc nhận username và password
+
+  if (!username || !password) {
+    return res.status(400).json({ success: false, message: "Vui lòng nhập Username và Password" });
+  }
+
+  const result = await UserService.verifyPassword(username, password);
+  res.success(result, 'Login successful');
+});
 /**
  * @desc Delete a user by ID.
  * @route DELETE /users/:id
