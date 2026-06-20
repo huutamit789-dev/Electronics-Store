@@ -32,7 +32,7 @@ const app = express();
 
 // Enable CORS for specified origins
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174'],
+  origin: ['http://localhost:5173', 'http://localhost:5174', 'https://fe.kimburin.i234.me'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
