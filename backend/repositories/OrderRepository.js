@@ -33,6 +33,14 @@ class OrderRepository {
     return await Order.findById(id).populate('user_id', '-password').populate('items.product_id').lean()
   }
 
+  // Find orders by user ID
+  async findByUserId(userId) {
+    return await Order.find({ user_id: userId })
+      .populate('items.product_id')
+      .sort({ created_at: -1 })
+      .lean();
+  }
+
   // Create a new order
   async create(orderData) {
     const order = new Order(orderData)

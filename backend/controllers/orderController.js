@@ -23,6 +23,17 @@ const getOrderById = asyncHandler(async (req, res) => {
 })
 
 /**
+ * @desc Get orders by user ID.
+ * @route GET /orders/user/:userId
+ * @access Public
+ */
+const getOrdersByUserId = asyncHandler(async (req, res) => {
+  const { userId } = req.params
+  const orders = await OrderService.getOrdersByUserId(userId)
+  res.success(orders, 'Orders returned successfully')
+})
+
+/**
  * @desc Create a new order.
  * @route POST /orders
  * @access Public
@@ -58,4 +69,4 @@ const deleteOrder = asyncHandler(async (req, res) => {
   res.success(result, 'Order deleted successfully');
 });
 
-module.exports = { getOrders, getOrderById, createOrder, updateOrderStatus, deleteOrder }
+module.exports = { getOrders, getOrderById, getOrdersByUserId, createOrder, updateOrderStatus, deleteOrder }

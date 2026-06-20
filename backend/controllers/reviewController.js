@@ -7,8 +7,7 @@ const { asyncHandler } = require('../middleware/asyncHandler')
  * @access Public
  */
 const getReviews = asyncHandler(async (req, res) => {
-  const currentUser = req.user; // Lấy từ authMiddleware
-  const reviews = await ReviewService.getAllReviews(currentUser)
+  const reviews = await ReviewService.getAllReviews()
   res.success(reviews, 'Reviews returned successfully')
 })
 

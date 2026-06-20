@@ -7,6 +7,6 @@ const router = express.Router()
 
 router.get('/', getReviews)
 router.post('/', authMiddleware, createReview)
-router.put('/:id/status', authMiddleware, updateReview)
-router.delete('/:id', authMiddleware, deleteReview) 
+router.put('/:id', authMiddleware, updateReview)
+router.delete('/:id', authMiddleware, deleteReview)
 module.exports = router

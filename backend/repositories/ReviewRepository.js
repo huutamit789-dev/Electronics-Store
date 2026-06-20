@@ -32,6 +32,16 @@ class ReviewRepository {
     const review = new Review(reviewData)
     return await review.save()
   }
+
+  // Update review
+  async update(reviewId, reviewData) {
+    return await Review.findByIdAndUpdate(reviewId, reviewData, { new: true });
+  }
+
+  // Delete review
+  async delete(reviewId) {
+    return await Review.findByIdAndDelete(reviewId);
+  }
 }
 
 module.exports = new ReviewRepository()

@@ -6,15 +6,15 @@ const cartService = require('../services/CartService'); // Adjust path if necess
 router.post('/add', async (req, res) => {
   try {
     // Extract data from request body, including price
-    const { userId, productId, quantity, price } = req.body;
+    const { user_id, product_id, quantity, price } = req.body;
 
     // Validate basic input
-    if (!userId || !productId || !quantity || price === undefined) {
-      return res.status(400).json({ success: false, message: 'Missing required fields: userId, productId, quantity, and price.' });
+    if (!user_id || !product_id || !quantity || price === undefined) {
+      return res.status(400).json({ success: false, message: 'Missing required fields: user_id, product_id, quantity, and price.' });
     }
 
     // Call the service to add the item to the cart
-    const updatedCart = await cartService.addToCart(userId, productId, quantity, price);
+    const updatedCart = await cartService.addToCart(user_id, product_id, quantity, price);
 
     res.status(200).json({
       success: true,
@@ -49,11 +49,11 @@ router.get('/:userId', async (req, res) => {
 // DELETE /api/cart/remove - Remove item from cart
 router.delete('/remove', async (req, res) => {
   try {
-    const { userId, productId } = req.body;
-    if (!userId || !productId) {
-      return res.status(400).json({ success: false, message: 'Missing required fields: userId, productId.' });
+    const { user_id, product_id } = req.body;
+    if (!user_id || !product_id) {
+      return res.status(400).json({ success: false, message: 'Missing required fields: user_id, product_id.' });
     }
-    const updatedCart = await cartService.removeFromCart(userId, productId);
+    const updatedCart = await cartService.removeFromCart(user_id, product_id);
     res.status(200).json({ success: true, message: 'Product removed from cart.', data: updatedCart });
   } catch (error) {
     console.error('Error removing product from cart:', error);
@@ -64,11 +64,11 @@ router.delete('/remove', async (req, res) => {
 // PUT /api/cart/update-quantity - Update item quantity in cart
 router.put('/update-quantity', async (req, res) => {
   try {
-    const { userId, productId, quantity } = req.body;
-    if (!userId || !productId || quantity === undefined) {
-      return res.status(400).json({ success: false, message: 'Missing required fields: userId, productId, quantity.' });
+    const { user_id, product_id, quantity } = req.body;
+    if (!user_id || !product_id || quantity === undefined) {
+      return res.status(400).json({ success: false, message: 'Missing required fields: user_id, product_id, quantity.' });
     }
-    const updatedCart = await cartService.updateItemQuantity(userId, productId, quantity);
+    const updatedCart = await cartService.updateItemQuantity(user_id, product_id, quantity);
     res.status(200).json({ success: true, message: 'Cart item quantity updated.', data: updatedCart });
   } catch (error) {
     console.error('Error updating cart item quantity:', error);

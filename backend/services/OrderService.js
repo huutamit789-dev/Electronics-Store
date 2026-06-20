@@ -12,8 +12,15 @@ class OrderService {
 
     const order = await OrderRepository.findById(id);
     if (!order) throw new Error('Order not found');
-    
+
     return order;
+  }
+
+  async getOrdersByUserId(userId) {
+    if (!userId) throw new Error('User ID is required');
+
+    const orders = await OrderRepository.findByUserId(userId);
+    return orders;
   }
 
   async createOrder(orderData) {

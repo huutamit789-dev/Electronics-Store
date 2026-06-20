@@ -18,8 +18,8 @@ const getCart = asyncHandler(async (req, res) => {
  * @access Public
  */
 const addToCart = asyncHandler(async (req, res) => {
-  const { user_id, product_id, quantity } = req.body
-  const cart = await CartService.addToCart(user_id, product_id, quantity)
+  const { user_id, product_id, quantity, price } = req.body
+  const cart = await CartService.addToCart(user_id, product_id, quantity, price)
   res.success(cart, 'Item added to cart successfully')
 })
 
