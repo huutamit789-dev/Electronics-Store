@@ -11,9 +11,7 @@ class ReviewRepository {
 
     const [reviews, total] = await Promise.all([
       Review.find()
-        .populate('user_id', '-password')
-        .populate('product_id')
-        .sort({ createdAt: -1 }) 
+        .sort({ created_at: -1 })
         .skip(skip)
         .limit(limitNum)
         .lean(),

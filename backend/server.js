@@ -17,6 +17,8 @@ const paymentRoutes = require('./routes/paymentRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const orderHistoryRoutes = require('./routes/orderHistoryRoutes');
 const userRoleRoutes = require('./routes/userRoleRoutes');
+const bannerRoutes = require('./routes/BannerRoutes');
+const footerRoutes = require('./routes/FooterRoutes');
 
 // Middleware Imports
 const { responseHandler } = require('./middleware/responseHandler');
@@ -66,6 +68,8 @@ app.use('/api/payments', paymentRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/order-history', orderHistoryRoutes);
 app.use('/api/user-roles', userRoleRoutes);
+app.use('/api/banners', bannerRoutes);
+app.use('/api/footers', footerRoutes);
 
 // --- Error Handling ---
 

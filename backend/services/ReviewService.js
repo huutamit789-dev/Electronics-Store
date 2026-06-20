@@ -8,11 +8,11 @@ class ReviewService {
 
   // Tạo một đánh giá mới
   async createReview(user, reviewData) {
-    const { user_id, product_id, rating } = reviewData;
+    const { author, rating, comment } = reviewData;
 
     // Validation
-    if (!user_id || !product_id || !rating) {
-      throw new Error('user_id, product_id, và rating là bắt buộc');
+    if (!author || !rating || !comment) {
+      throw new Error('author, rating, và comment là bắt buộc');
     }
 
     if (rating < 1 || rating > 5) {
