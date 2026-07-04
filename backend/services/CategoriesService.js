@@ -1,9 +1,25 @@
 const CategoriesRepository = require('../repositories/CategoriesRepository');
+const redis = require('../config/redis');
+
+const CACHE_TTL = 3600; // 1 giờ
 
 class CategoriesService {
-async getAllCategories(user, page = 1, limit = 10) {
-  return await CategoriesRepository.findAll(page, limit);
-}
+  async getAllCategories(user, page = 1, limit = 10) {
+    const cacheKey = `categories:all:${page}:${limit}`;
+    const cached = await redis.get(cacheKey);
+    if (cached) return JSON.parse(cached);
+
+    const data = await CategoriesRepository.findAll(page, limit);
+    await redis.set(cacheKey, JSON.stringify(data), 'EX', CACHE_TTL);
+    return data;
+  }
+
+  async _invalidateCategoryCache() {
+    const keys = await redis.keys('categories:*');
+    if (keys.length > 0) {
+      await redis.del(keys);
+    }
+  }
 
 // Create a new Categories
   async createCategories(user, categoryData) {
@@ -26,6 +42,7 @@ async getAllCategories(user, page = 1, limit = 10) {
     try {
       // 3. Thực hiện tạo trong Database
       const createdCategory = await CategoriesRepository.create(categoryData);
+      await this._invalidateCategoryCache();
       return createdCategory;
     } catch (error) {
       // 5. Xử lý lỗi đặc thù (DupliCategories key)
@@ -46,6 +63,7 @@ async getAllCategories(user, page = 1, limit = 10) {
       const updated = await CategoriesRepository.update(CategoriesId, CategoriesData);
       if (!updated) throw new Error('Categories not found');
       
+      await this._invalidateCategoryCache();
       return updated;
     }
   
@@ -71,6 +89,8 @@ async getAllCategories(user, page = 1, limit = 10) {
         error.status = 404;
         throw error;
       }
+
+      await this._invalidateCategoryCache();
     }
 }
 
