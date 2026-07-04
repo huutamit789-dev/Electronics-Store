@@ -2019,3 +2019,528 @@ Stack: Error: Invalid authentication credentials
     at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
     at async D:\Project\DuAn\ElectricStore\backend\controllers\userController.js:32:18
 
+--- 2026-07-04T06:42:20.163Z ---
+Request: POST /api/products
+Status: 500
+Message: name, price, and cate_id are required
+Stack: Error: name, price, and cate_id are required
+    at ProductService.createProduct (D:\Dự An Bán Hàng\BackEnd\backend\services\ProductService.js:36:44)
+    at D:\Dự An Bán Hàng\BackEnd\backend\controllers\productController.js:41:43
+    at D:\Dự An Bán Hàng\BackEnd\backend\middleware\asyncHandler.js:3:21
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (D:\Dự An Bán Hàng\BackEnd\backend\middleware\authMiddleware.js:28:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+--- 2026-07-04T07:32:04.883Z ---
+Request: PUT /api/orders/undefined
+Status: 500
+Message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Order"
+Stack: CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Order"
+    at SchemaObjectId.cast (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\schema\objectId.js:252:11)
+    at SchemaType.applySetters (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\schemaType.js:1373:12)
+    at SchemaType.castForQuery (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\schemaType.js:1793:17)
+    at cast (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\cast.js:386:32)
+    at Query.cast (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\query.js:5228:12)
+    at Query._castConditions (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\query.js:2411:10)
+    at model.Query._findOneAndUpdate (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\query.js:3557:8)
+    at maybeTracedQueryExec (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\query.js:4801:83)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async OrderRepository.update (D:\Dự An Bán Hàng\BackEnd\backend\repositories\OrderRepository.js:52:12)
+
+--- 2026-07-04T07:32:20.754Z ---
+Request: PUT /api/orders/undefined
+Status: 500
+Message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Order"
+Stack: CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Order"
+    at SchemaObjectId.cast (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\schema\objectId.js:252:11)
+    at SchemaType.applySetters (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\schemaType.js:1373:12)
+    at SchemaType.castForQuery (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\schemaType.js:1793:17)
+    at cast (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\cast.js:386:32)
+    at Query.cast (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\query.js:5228:12)
+    at Query._castConditions (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\query.js:2411:10)
+    at model.Query._findOneAndUpdate (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\query.js:3557:8)
+    at maybeTracedQueryExec (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\mongoose\lib\query.js:4801:83)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async OrderRepository.update (D:\Dự An Bán Hàng\BackEnd\backend\repositories\OrderRepository.js:52:12)
+
+--- 2026-07-04T08:08:55.168Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:55.170Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:56.020Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:56.028Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:56.468Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:56.472Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:57.270Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:57.274Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:57.433Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:57.439Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:57.619Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:57.623Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:57.792Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:57.797Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:57.954Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:57.960Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:58.104Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:58.110Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:58.267Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:58.273Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:58.443Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:08:58.450Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:09:19.767Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:09:19.770Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:09:23.632Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:09:23.639Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:09:24.245Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:09:24.249Z ---
+Request: GET /api/products/category/6a48aa33c7465092e7418fc4
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+Stack: Error: Route not found: GET /api/products/category/6a48aa33c7465092e7418fc4
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:09:40.749Z ---
+Request: GET /api/products/category/6a48aa29c7465092e7418fc3
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa29c7465092e7418fc3
+Stack: Error: Route not found: GET /api/products/category/6a48aa29c7465092e7418fc3
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+
+--- 2026-07-04T08:09:40.752Z ---
+Request: GET /api/products/category/6a48aa29c7465092e7418fc3
+Status: 404
+Message: Route not found: GET /api/products/category/6a48aa29c7465092e7418fc3
+Stack: Error: Route not found: GET /api/products/category/6a48aa29c7465092e7418fc3
+    at notFoundHandler (D:\Dự An Bán Hàng\BackEnd\backend\middleware\notFoundHandler.js:2:17)
+    at Layer.handleRequest (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:342:13)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:297:9
+    at processParams (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:582:12)
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:291:5)
+    at D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:688:15
+    at next (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:276:14)
+    at router.handle (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:186:3)
+    at router (D:\Dự An Bán Hàng\BackEnd\backend\node_modules\router\index.js:60:12)
+

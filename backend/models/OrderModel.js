@@ -12,7 +12,8 @@ const orderSchema = new mongoose.Schema({
     enum: ['pending', 'completed', 'cancelled'], 
     default: 'pending' 
   },
-  created_at: { type: Date, default: Date.now }
+  created_at: { type: Date, default: Date.now },
+  momo_order_id: { type: String } // Lưu orderId từ MoMo để tìm lại sau
 });
 
 module.exports = mongoose.model('Order', orderSchema);

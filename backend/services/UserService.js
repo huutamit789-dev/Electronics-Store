@@ -17,21 +17,23 @@ class UserService {
    */
   async createUser(userData) {
     const { username, email, password, phonenumber } = userData;
+    const normalizedUsername = typeof username === 'string' ? username.trim().toLowerCase() : '';
+    const normalizedEmail = typeof email === 'string' ? email.trim().toLowerCase() : '';
 
     // 1. Chỉ validate các trường bắt buộc cơ bản
-    if (!username || !password || !phonenumber) {
+    if (!normalizedUsername || !password || !phonenumber) {
       throw new Error('Username, password, and phonenumber are required.');
     }
 
     // 2. Validate trùng lặp Username
-    const existingByUsername = await UserRepository.findByUsername(username);
+    const existingByUsername = await UserRepository.findByUsername(normalizedUsername);
     if (existingByUsername) {
       throw new Error('Username is already in use.');
     }
 
     // 3. Validate trùng lặp Email (nếu người dùng có nhập email)
-    if (email) {
-      const existingByEmail = await UserRepository.findByEmail(email);
+    if (normalizedEmail) {
+      const existingByEmail = await UserRepository.findByEmail(normalizedEmail);
       if (existingByEmail) {
         throw new Error('Email is already in use.');
       }
@@ -43,7 +45,10 @@ class UserService {
     // 5. Tạo user (không cần transaction phức tạp nếu bạn thấy rắc rối)
     // Nhưng vẫn nên dùng để đảm bảo dữ liệu đồng bộ
     const newUser = await UserRepository.create({
-      username, email, password: hashedPassword, phonenumber
+      username: normalizedUsername,
+      email: normalizedEmail,
+      password: hashedPassword,
+      phonenumber
     });
 
     // 6. Tạo role mặc định
@@ -145,8 +150,10 @@ class UserService {
    * Can log in using either username or email.
    */
   async verifyPassword(username, password) {
+    const normalizedUsername = typeof username === 'string' ? username.trim().toLowerCase() : '';
+
     // 1. Chỉ tìm bằng username
-    const user = await UserRepository.findByUsername(username);
+    const user = await UserRepository.findByUsername(normalizedUsername);
 
     // 2. Nếu không thấy user hoặc mật khẩu sai
     const isMatch = user ? await bcrypt.compare(password, user.password) : false;

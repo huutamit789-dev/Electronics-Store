@@ -13,6 +13,15 @@ class OrderHistoryService {
       return await OrderHistoryRepository.findAll(page, limit);
     }
   }
+
+  // Create order history entry
+  async createOrderHistory(historyData) {
+    if (!historyData.order_id) throw new Error('Order ID is required');
+    if (!historyData.old_status) throw new Error('Old status is required');
+    if (!historyData.new_status) throw new Error('New status is required');
+
+    return await OrderHistoryRepository.create(historyData);
+  }
 }
 
 module.exports = new OrderHistoryService();

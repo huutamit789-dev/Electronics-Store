@@ -29,12 +29,14 @@ class UserRepository {
 
   // Find user by username
   async findByUsername(username) {
-    return await User.findOne({ username });
+    const normalizedUsername = typeof username === 'string' ? username.trim().toLowerCase() : '';
+    return await User.findOne({ username: normalizedUsername });
   }
 
   // Find user by email
   async findByEmail(email) {
-    return await User.findOne({ email });
+    const normalizedEmail = typeof email === 'string' ? email.trim().toLowerCase() : '';
+    return await User.findOne({ email: normalizedEmail });
   }
 
   // Find user by ID

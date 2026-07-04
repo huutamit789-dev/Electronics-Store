@@ -12,4 +12,20 @@ const getOrderHistory = asyncHandler(async (req, res) => {
   res.success(history, 'Order history returned successfully')
 })
 
-module.exports = { getOrderHistory }
+/**
+ * @desc Create a new order history entry.
+ * @route POST /order-history
+ * @access Public
+ */
+const createOrderHistory = asyncHandler(async (req, res) => {
+  const { order_id, old_status, new_status, note } = req.body;
+  const history = await OrderHistoryService.createOrderHistory({
+    order_id,
+    old_status,
+    new_status,
+    note
+  });
+  res.success(history, 'Order history created successfully')
+})
+
+module.exports = { getOrderHistory, createOrderHistory }

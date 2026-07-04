@@ -56,6 +56,17 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
 })
 
 /**
+ * @desc Update an order by order ID.
+ * @route PUT /orders/:id
+ * @access Public
+ */
+const updateOrder = asyncHandler(async (req, res) => {
+  const { id } = req.params
+  const updated = await OrderService.updateOrder(id, req.body)
+  res.success(updated, 'Order updated successfully')
+})
+
+/**
  * @desc Delete an order by order ID.
  * @route DELETE /orders/:id
  * @access Public
@@ -69,4 +80,4 @@ const deleteOrder = asyncHandler(async (req, res) => {
   res.success(result, 'Order deleted successfully');
 });
 
-module.exports = { getOrders, getOrderById, getOrdersByUserId, createOrder, updateOrderStatus, deleteOrder }
+module.exports = { getOrders, getOrderById, getOrdersByUserId, createOrder, updateOrderStatus, updateOrder, deleteOrder }

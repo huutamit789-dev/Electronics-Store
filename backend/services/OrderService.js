@@ -46,6 +46,15 @@ class OrderService {
     return updated;
   }
 
+  async updateOrder(id, updateData) {
+    if (!id) throw new Error('Order ID is required');
+    
+    const updated = await OrderRepository.update(id, updateData);
+    if (!updated) throw new Error('Không tìm thấy đơn hàng để cập nhật');
+    
+    return updated;
+  }
+
     async deleteOrder(currentUser, orderIdToDelete) {
         // 1. Kiểm tra quyền Admin
         if (!currentUser || currentUser.role !== 'admin') {
