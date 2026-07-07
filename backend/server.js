@@ -19,6 +19,7 @@ const orderHistoryRoutes = require('./routes/orderHistoryRoutes');
 const userRoleRoutes = require('./routes/userRoleRoutes');
 const bannerRoutes = require('./routes/BannerRoutes');
 const footerRoutes = require('./routes/FooterRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
 
 // Middleware Imports
 const { responseHandler } = require('./middleware/responseHandler');
@@ -70,6 +71,7 @@ app.use('/api/order-history', orderHistoryRoutes);
 app.use('/api/user-roles', userRoleRoutes);
 app.use('/api/banners', bannerRoutes);
 app.use('/api/footers', footerRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 // --- Error Handling ---
 
