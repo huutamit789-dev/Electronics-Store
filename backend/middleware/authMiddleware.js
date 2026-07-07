@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/UserModel')
+const config = require('../config/config')
 
 // Middleware xác thực token
 async function authMiddleware(req, res, next) {
@@ -13,7 +14,7 @@ async function authMiddleware(req, res, next) {
       throw error
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    const decoded = jwt.verify(token, config.JWT_SECRET)
     
     // Tìm user và gắn thêm thông tin role để middleware sau sử dụng
     const user = await User.findById(decoded.id, { password: 0 }).lean()

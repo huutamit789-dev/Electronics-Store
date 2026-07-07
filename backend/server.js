@@ -34,10 +34,9 @@ const app = express();
 
 // --- Middleware Configuration ---
 
-// Enable CORS for specified origins
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174', 'https://lehuutamit.kimburin.i234.me'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  origin: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true
 }));
 

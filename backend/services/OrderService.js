@@ -1,4 +1,7 @@
 const OrderRepository = require('../repositories/OrderRepository');
+const User = require('../models/UserModel');
+const Order = require('../models/OrderModel');
+const emailService = require('../services/emailService');
 
 const VALID_STATUSES = ['pending', 'completed', 'cancelled'];
 
@@ -91,7 +94,15 @@ class OrderService {
       coupon_code: coupon_code ? coupon_code.toUpperCase() : null
     };
 
-    return await OrderRepository.create(finalOrderData);
+    const created = await OrderRepository.create(finalOrderData);
+    // Populate user email for notification
+    const populated = await Order.findById(created._id).populate('user_id', 'email');
+    // Send emails to customer and admin
+    if (populated.user_id && populated.user_id.email) {
+      await emailService.sendOrderConfirmation(populated.user_id.email, populated);
+    }
+    await emailService.sendOrderNotificationToAdmin(populated);
+    return created;
   }
 
   async updateOrderStatus(id, status) {
@@ -102,6 +113,14 @@ class OrderService {
 
     const updated = await OrderRepository.updateStatus(id, status);
     if (!updated) throw new Error('Không tìm thấy đơn hàng để cập nhật');
+    // Fetch full order with populated user for email notifications
+    const fullOrder = await Order.findById(id).populate('user_id', 'email');
+    // Notify customer about status change
+    if (fullOrder.user_id && fullOrder.user_id.email) {
+      await emailService.sendStatusUpdate(fullOrder.user_id.email, fullOrder);
+    }
+    // Notify admin as well
+    await emailService.sendOrderNotificationToAdmin(fullOrder);
     
     return updated;
   }
