@@ -130,6 +130,77 @@ class ProductRepository {
   async delete(id) {
     return await Product.findByIdAndDelete(id)
   }
+
+  /**
+   * @function search
+   * @description Performs advanced search and filtering on products, supporting keywords, price range, categories, tech specs, sorting, and pagination.
+   * @param {Object} options - Search options including keyword, priceMin, priceMax, sortBy, specs, page, limit, cate_id.
+   * @returns {Promise<Object>} Object containing paginated products, total, totalPages, and currentPage.
+   */
+  async search({ keyword, cate_id, priceMin, priceMax, sortBy, specs = {}, page = 1, limit = 10 }) {
+    const pageNum = parseInt(page) || 1;
+    const limitNum = parseInt(limit) || 10;
+    const skip = (pageNum - 1) * limitNum;
+
+    const query = {};
+
+    // Lọc theo danh mục
+    if (cate_id) {
+      query.cate_id = cate_id;
+    }
+
+    // Lọc theo từ khóa (tìm kiếm theo tên và mô tả)
+    if (keyword) {
+      query.$or = [
+        { name: { $regex: keyword, $options: 'i' } },
+        { description: { $regex: keyword, $options: 'i' } }
+      ];
+    }
+
+    // Lọc theo khoảng giá
+    if (priceMin || priceMax) {
+      query.price = {};
+      if (priceMin) query.price.$gte = Number(priceMin);
+      if (priceMax) query.price.$lte = Number(priceMax);
+    }
+
+    // Lọc theo thông số kỹ thuật động (specs.memory, specs.storage, specs.os, v.v.)
+    if (specs && Object.keys(specs).length > 0) {
+      Object.keys(specs).forEach(key => {
+        if (specs[key]) {
+          query[`specs.${key}`] = { $regex: specs[key], $options: 'i' };
+        }
+      });
+    }
+
+    // Tùy chọn sắp xếp dữ liệu
+    let sortOption = { _id: -1 }; // Mặc định là mới nhất
+    if (sortBy === 'price_asc') {
+      sortOption = { price: 1 };
+    } else if (sortBy === 'price_desc') {
+      sortOption = { price: -1 };
+    } else if (sortBy === 'newest') {
+      sortOption = { _id: -1 };
+    }
+
+    // Chạy song song đếm tổng số lượng và lấy dữ liệu phân trang
+    const [products, total] = await Promise.all([
+      Product.find(query)
+        .populate('cate_id')
+        .sort(sortOption)
+        .skip(skip)
+        .limit(limitNum)
+        .lean(),
+      Product.countDocuments(query)
+    ]);
+
+    return {
+      products,
+      total,
+      totalPages: Math.ceil(total / limitNum),
+      currentPage: pageNum
+    };
+  }
 }
 
 module.exports = new ProductRepository()

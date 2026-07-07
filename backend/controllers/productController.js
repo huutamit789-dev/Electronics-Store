@@ -58,4 +58,41 @@ const deleteProduct = asyncHandler(async (req, res) => {
   res.success(null, 'Product deleted successfully')
 })
 
-module.exports = { getProducts, getProductById, createProduct, updateProduct, deleteProduct, getAllProducts, getProductByCategoryId }
+/**
+ * @desc Search and filter products dynamically (Public)
+ * @route GET /api/products/search
+ * @access Public
+ */
+const searchProducts = asyncHandler(async (req, res) => {
+  const { keyword, cate_id, priceMin, priceMax, sortBy, page, limit, ram, storage, os } = req.query;
+  
+  // Ánh xạ các trường RAM và bộ nhớ từ query của client sang specs tương ứng của MongoDB
+  const specs = {};
+  if (ram) specs.memory = ram;
+  if (storage) specs.storage = storage;
+  if (os) specs.os = os;
+
+  const result = await ProductService.searchProducts({
+    keyword,
+    cate_id,
+    priceMin,
+    priceMax,
+    sortBy,
+    specs,
+    page,
+    limit
+  });
+
+  res.success(result, 'Products search completed successfully');
+});
+
+module.exports = { 
+  getProducts, 
+  getProductById, 
+  createProduct, 
+  updateProduct, 
+  deleteProduct, 
+  getAllProducts, 
+  getProductByCategoryId,
+  searchProducts
+}

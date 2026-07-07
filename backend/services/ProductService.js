@@ -103,6 +103,16 @@ class ProductService {
     await this._invalidateProductCache();
     return deleted;
   }
+
+  /**
+   * @function searchProducts
+   * @description Service method to search and filter products. Bypasses Redis cache as dynamic search param combinations are highly variable.
+   * @param {Object} queryOptions - Search parameters from controller.
+   * @returns {Promise<Object>} Search results containing products, total, totalPages, and currentPage.
+   */
+  async searchProducts(queryOptions) {
+    return await ProductRepository.search(queryOptions);
+  }
 }
 
 module.exports = new ProductService();
