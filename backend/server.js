@@ -20,6 +20,7 @@ const userRoleRoutes = require('./routes/userRoleRoutes');
 const bannerRoutes = require('./routes/BannerRoutes');
 const footerRoutes = require('./routes/FooterRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
+const couponRoutes = require('./routes/couponRoutes');
 
 // Middleware Imports
 const { responseHandler } = require('./middleware/responseHandler');
@@ -72,6 +73,7 @@ app.use('/api/user-roles', userRoleRoutes);
 app.use('/api/banners', bannerRoutes);
 app.use('/api/footers', footerRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/coupons', couponRoutes);
 
 // --- Error Handling ---
 

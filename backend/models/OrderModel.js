@@ -13,7 +13,10 @@ const orderSchema = new mongoose.Schema({
     default: 'pending' 
   },
   created_at: { type: Date, default: Date.now },
-  momo_order_id: { type: String } // Lưu orderId từ MoMo để tìm lại sau
+  momo_order_id: { type: String }, // Lưu orderId từ MoMo để tìm lại sau
+  coupon_code: { type: String, default: null }, // Mã giảm giá được sử dụng
+  discount_amount: { type: Number, default: 0 }, // Số tiền được giảm giá
+  original_price: { type: Number, default: 0 } // Giá trị gốc của đơn hàng trước giảm giá
 });
 
 module.exports = mongoose.model('Order', orderSchema);
