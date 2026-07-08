@@ -1,67 +1,72 @@
 module.exports = {
-  // ============ categories ENDPOINTS ============
   '/categories': {
     get: {
-      tags: ['categories'],
+      tags: ['Categories'],
       summary: 'List all categories',
       responses: {
         '200': {
           description: 'List of categories',
           content: {
             'application/json': {
-              schema: { type: 'array', items: { $ref: '#/components/schemas/categories' } }
+              schema: { type: 'array', items: { $ref: '#/components/schemas/Category' } }
             }
           }
         }
       }
     },
     post: {
-      tags: ['categories'],
-      summary: 'Create a new categories',
+      tags: ['Categories'],
+      summary: 'Create a new category',
+      security: [{ bearerAuth: [] }],
       requestBody: {
         required: true,
         content: {
           'application/json': {
-            schema: { $ref: '#/components/schemas/categories' }
+            schema: { $ref: '#/components/schemas/Category' }
           }
         }
       },
       responses: {
-        '201': { description: 'categories created successfully' },
-        '400': { description: 'Invalid request', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+        '201': { description: 'Category created successfully' },
+        '400': { description: 'Invalid request', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } },
+        '401': { description: 'Unauthorized' }
       }
     }
   },
-'/categories/{id}': {
+  '/categories/{id}': {
     put: {
-      tags: ['categories'],
-      summary: 'Update an existing categories',
+      tags: ['Categories'],
+      summary: 'Update an existing category',
+      security: [{ bearerAuth: [] }],
       parameters: [
-        { name: 'id', in: 'path', required: true, schema: { type: 'string' }, description: 'categories ID to update' }
+        { name: 'id', in: 'path', required: true, schema: { type: 'string' }, description: 'Category ID to update' }
       ],
       requestBody: {
         required: true,
         content: {
           'application/json': {
-            schema: { $ref: '#/components/schemas/categories' }
+            schema: { $ref: '#/components/schemas/Category' }
           }
         }
       },
       responses: {
-        '200': { description: 'categories updated successfully' },
-        '400': { description: 'Invalid request', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+        '200': { description: 'Category updated successfully' },
+        '400': { description: 'Invalid request', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } },
+        '401': { description: 'Unauthorized' }
       }
     },
     delete: {
-      tags: ['categories'],
-      summary: 'Delete an existing categories',
+      tags: ['Categories'],
+      summary: 'Delete an existing category',
+      security: [{ bearerAuth: [] }],
       parameters: [
-        { name: 'id', in: 'path', required: true, schema: { type: 'string' }, description: 'categories ID to delete' }
+        { name: 'id', in: 'path', required: true, schema: { type: 'string' }, description: 'Category ID to delete' }
       ],
       responses: {
-        '200': { description: 'categories deleted successfully' },
-        '404': { description: 'categories not found', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+        '200': { description: 'Category deleted successfully' },
+        '401': { description: 'Unauthorized' },
+        '404': { description: 'Category not found', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
       }
     }
-  },
+  }
 };

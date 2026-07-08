@@ -32,6 +32,22 @@ module.exports = {
       }
     }
   },
+  '/products/getAllProduct': {
+    get: {
+      tags: ['Products'],
+      summary: 'Get all products (including inactive)',
+      responses: {
+        '200': {
+          description: 'All products returned successfully',
+          content: {
+            'application/json': {
+              schema: { type: 'array', items: { $ref: '#/components/schemas/Product' } }
+            }
+          }
+        }
+      }
+    }
+  },
   '/products/getProductByCategoryId/{categoryId}': {
     get: {
       tags: ['Products'],
@@ -97,10 +113,64 @@ module.exports = {
       }
     }
   },
+  '/products/search': {
+    get: {
+      tags: ['Products'],
+      summary: 'Advanced search and filtering for products',
+      description: 'Search products by keyword, price, specs, sorting, and pagination',
+      parameters: [
+        { name: 'keyword', in: 'query', required: false, schema: { type: 'string' }, description: 'Search keyword' },
+        { name: 'minPrice', in: 'query', required: false, schema: { type: 'number' }, description: 'Minimum price' },
+        { name: 'maxPrice', in: 'query', required: false, schema: { type: 'number' }, description: 'Maximum price' },
+        { name: 'category', in: 'query', required: false, schema: { type: 'string' }, description: 'Category ID' },
+        { name: 'sortBy', in: 'query', required: false, schema: { type: 'string', enum: ['price', 'name', 'createdAt'], description: 'Sort field' } },
+        { name: 'sortOrder', in: 'query', required: false, schema: { type: 'string', enum: ['asc', 'desc'], description: 'Sort order' } },
+        { name: 'page', in: 'query', required: false, schema: { type: 'integer', default: 1 }, description: 'Page number' },
+        { name: 'limit', in: 'query', required: false, schema: { type: 'integer', default: 10 }, description: 'Items per page' }
+      ],
+      responses: {
+        '200': {
+          description: 'Search results returned successfully',
+          content: {
+            'application/json': {
+              schema: {
+                type: 'object',
+                properties: {
+                  success: { type: 'boolean', example: true },
+                  data: {
+                    type: 'array',
+                    items: { $ref: '#/components/schemas/Product' }
+                  },
+                  total: { type: 'integer', example: 25 },
+                  page: { type: 'integer', example: 1 },
+                  totalPages: { type: 'integer', example: 3 }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   '/products/{id}': {
+    get: {
+      tags: ['Products'],
+      summary: 'Get product by ID',
+      parameters: [
+        { name: 'id', in: 'path', required: true, schema: { type: 'string' }, description: 'Product ID' }
+      ],
+      responses: {
+        '200': {
+          description: 'Product retrieved successfully',
+          content: { 'application/json': { schema: { $ref: '#/components/schemas/Product' } } }
+        },
+        '404': { description: 'Product not found', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+      }
+    },
     put: {
       tags: ['Products'],
       summary: 'Update an existing product',
+      security: [{ bearerAuth: [] }],
       parameters: [
         { name: 'id', in: 'path', required: true, schema: { type: 'string' }, description: 'Product ID to update' }
       ],
@@ -114,17 +184,20 @@ module.exports = {
       },
       responses: {
         '200': { description: 'Product updated successfully' },
-        '400': { description: 'Invalid request', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+        '400': { description: 'Invalid request', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } },
+        '401': { description: 'Unauthorized' }
       }
     },
     delete: {
       tags: ['Products'],
       summary: 'Delete an existing product',
+      security: [{ bearerAuth: [] }],
       parameters: [
         { name: 'id', in: 'path', required: true, schema: { type: 'string' }, description: 'Product ID to delete' }
       ],
       responses: {
         '200': { description: 'Product deleted successfully' },
+        '401': { description: 'Unauthorized' },
         '404': { description: 'Product not found', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
       }
     }

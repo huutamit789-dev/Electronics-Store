@@ -6,13 +6,26 @@ const paymentPaths = require('./paymentPaths');
 const reviewPaths = require('./reviewPaths');
 const orderHistoryPaths = require('./orderHistoryPaths');
 const categoriesPaths = require('./categoriesPaths');
+const userRolePaths = require('./userRolePaths');
+const footerPaths = require('./footerPaths');
+const dashboardPaths = require('./dashboardPaths');
+const couponPaths = require('./couponPaths');
+const componentPaths = require('./componentPaths');
+const bannerPaths = require('./bannerPaths');
+
 module.exports = {
-  ...require('./userPaths'),
-  ...require('./productPaths'),
-  ...require('./orderPaths'),
-  ...require('./cartPaths'),
-  ...require('./paymentPaths'),
-  ...require('./reviewPaths'),
-  ...require('./orderHistoryPaths'),
-  ...require('./categoriesPaths')
+  ...userPaths,
+  ...productPaths,
+  ...orderPaths,
+  ...cartPaths,
+  ...paymentPaths,
+  ...reviewPaths,
+  ...orderHistoryPaths,
+  ...categoriesPaths,
+  ...userRolePaths,
+  ...footerPaths,
+  ...dashboardPaths,
+  ...couponPaths,
+  ...componentPaths,
+  ...bannerPaths
 };

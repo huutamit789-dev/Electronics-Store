@@ -13,6 +13,7 @@ module.exports = {
     post: {
       tags: ['Reviews'],
       summary: 'Create a new review',
+      security: [{ bearerAuth: [] }],
       requestBody: {
         required: true,
         content: {
@@ -23,46 +24,43 @@ module.exports = {
       },
       responses: {
         '201': { description: 'Review created successfully' },
-        '400': { description: 'Invalid request', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+        '400': { description: 'Invalid request', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } },
+        '401': { description: 'Unauthorized' }
       }
     }
   },
-  '/reviews/{id}/status': {
+  '/reviews/{id}': {
     put: {
       tags: ['Reviews'],
-      summary: 'Update review status',
+      summary: 'Update review',
+      security: [{ bearerAuth: [] }],
       parameters: [
-        { name: 'id', in: 'path', required: true, schema: { type: 'string' }, description: 'Review ID to update status' }
+        { name: 'id', in: 'path', required: true, schema: { type: 'string' }, description: 'Review ID to update' }
       ],
       requestBody: {
         required: true,
         content: {
           'application/json': {
-            schema: {
-              type: 'object',
-              required: ['status'],
-              properties: {
-                status: { type: 'string', example: 'completed', enum: ['pending', 'completed', 'cancelled'] }
-              }
-            }
+            schema: { $ref: '#/components/schemas/Review' }
           }
         }
       },
       responses: {
-        '200': { description: 'Review status updated successfully' },
-        '400': { description: 'Invalid request', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+        '200': { description: 'Review updated successfully' },
+        '400': { description: 'Invalid request', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } },
+        '401': { description: 'Unauthorized' }
       }
-    }
-  },
-  '/reviews/{id}': {
+    },
     delete: {
       tags: ['Reviews'],
       summary: 'Delete an existing review',
+      security: [{ bearerAuth: [] }],
       parameters: [
         { name: 'id', in: 'path', required: true, schema: { type: 'string' }, description: 'Review ID to delete' }
       ],
       responses: {
         '200': { description: 'Review deleted successfully' },
+        '401': { description: 'Unauthorized' },
         '404': { description: 'Review not found', content: { 'application/json': { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
       }
     }
