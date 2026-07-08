@@ -21,6 +21,7 @@ const bannerRoutes = require('./routes/BannerRoutes');
 const footerRoutes = require('./routes/FooterRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const couponRoutes = require('./routes/couponRoutes');
+const componentRoutes = require('./routes/ComponentRoutes');
 
 // Middleware Imports
 const { responseHandler } = require('./middleware/responseHandler');
@@ -73,6 +74,7 @@ app.use('/api/banners', bannerRoutes);
 app.use('/api/footers', footerRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/coupons', couponRoutes);
+app.use('/api/components', componentRoutes);
 
 // --- Error Handling ---
 
