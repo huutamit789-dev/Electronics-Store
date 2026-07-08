@@ -36,9 +36,10 @@ const app = express();
 // --- Middleware Configuration ---
 
 app.use(cors({
-  origin: true,
+  origin: ['https://electronics-store-front-end.vercel.app', 'http://localhost:5173', 'http://localhost:8091'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Parse JSON bodies
