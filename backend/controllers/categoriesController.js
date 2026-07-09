@@ -1,5 +1,6 @@
 const CategoriesService = require('../services/CategoriesService')
 const { asyncHandler } = require('../middleware/asyncHandler')
+const fs = require('fs')
 
 /**
  * @desc Get all product Categories.
@@ -45,4 +46,38 @@ const updateCategories = asyncHandler(async (req, res) => {
   res.success(result, 'Categories updated successfully');
 });
 
-module.exports = { getCategories, createCategories, deleteCategories, updateCategories }
+/**
+ * @desc Bulk create categories.
+ * @route POST /Categories/bulk
+ * @access Admin
+ */
+const bulkCreateCategories = asyncHandler(async (req, res) => {
+  const currentUser = req.user;
+  const categoriesData = req.body;
+
+  const result = await CategoriesService.bulkCreateCategories(currentUser, categoriesData);
+  res.success(result, 'Categories bulk created successfully', 201);
+});
+
+/**
+ * @desc Bulk create categories from Excel file.
+ * @route POST /Categories/bulk/excel
+ * @access Admin
+ */
+const bulkCreateCategoriesFromExcel = asyncHandler(async (req, res) => {
+  const currentUser = req.user;
+  
+  if (!req.file) {
+    return res.error('Không có file được tải lên', 400);
+  }
+
+  const filePath = req.file.path;
+  const result = await CategoriesService.bulkCreateCategoriesFromExcel(currentUser, filePath);
+
+  // Delete the uploaded file after processing
+  fs.unlinkSync(filePath);
+
+  res.success(result, 'Categories bulk created from Excel successfully', 201);
+});
+
+module.exports = { getCategories, createCategories, deleteCategories, updateCategories, bulkCreateCategories, bulkCreateCategoriesFromExcel }

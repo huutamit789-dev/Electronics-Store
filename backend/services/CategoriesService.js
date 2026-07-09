@@ -92,6 +92,151 @@ class CategoriesService {
 
       await this._invalidateCategoryCache();
     }
+
+    async bulkCreateCategories(user, categoriesData) {
+      // 1. Kiểm tra quyền (Authorization)
+      if (!user || user.role !== 'admin') {
+        const error = new Error('Bạn không có quyền thực hiện hành động này');
+        error.status = 403;
+        throw error;
+      }
+
+      // 2. Validation
+      if (!Array.isArray(categoriesData) || categoriesData.length === 0) {
+        const error = new Error('Dữ liệu danh mục phải là một mảng không rỗng');
+        error.status = 400;
+        throw error;
+      }
+
+      // Validate each category
+      for (let i = 0; i < categoriesData.length; i++) {
+        const category = categoriesData[i];
+        if (!category.name) {
+          const error = new Error(`Danh mục tại vị trí ${(i + 1)} thiếu tên`);
+          error.status = 400;
+          throw error;
+        }
+      }
+
+      try {
+        // 3. Thực hiện tạo hàng loạt trong Database
+        const createdCategories = await CategoriesRepository.bulkCreate(categoriesData);
+        await this._invalidateCategoryCache();
+        
+        return {
+          success: true,
+          created: createdCategories.length,
+          total: categoriesData.length,
+          data: createdCategories
+        };
+      } catch (error) {
+        // 4. Xử lý lỗi đặc thù (Duplicate key)
+        if (error.code === 11000) {
+          const err = new Error('Một hoặc nhiều danh mục đã tồn tại');
+          err.status = 409;
+          throw err;
+        }
+        throw error; 
+      }
+    }
+
+    async bulkCreateCategoriesFromExcel(user, filePath) {
+      // 1. Kiểm tra quyền (Authorization)
+      if (!user || user.role !== 'admin') {
+        const error = new Error('Bạn không có quyền thực hiện hành động này');
+        error.status = 403;
+        throw error;
+      }
+
+      const XLSX = require('xlsx');
+      const Category = require('../models/CategoryModel');
+      
+      try {
+        // 2. Đọc file Excel
+        const workbook = XLSX.readFile(filePath);
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+        
+        // 3. Chuyển đổi sang JSON
+        const jsonData = XLSX.utils.sheet_to_json(worksheet);
+        
+        if (!Array.isArray(jsonData) || jsonData.length === 0) {
+          const error = new Error('File Excel không có dữ liệu');
+          error.status = 400;
+          throw error;
+        }
+
+        // 4. Validate và chuẩn hóa dữ liệu
+        const categoriesData = [];
+        const seenNames = new Set(); // Để lọc trùng trong file Excel
+        
+        for (let i = 0; i < jsonData.length; i++) {
+          const row = jsonData[i];
+          const category = {
+            name: row.name || row.Name || row.Ten || row.ten,
+            description: row.description || row.Description || row.MoTa || row.moTa || ''
+          };
+
+          if (!category.name) {
+            const error = new Error(`Dòng ${(i + 2)} trong Excel thiếu tên danh mục`);
+            error.status = 400;
+            throw error;
+          }
+
+          // Lọc bỏ trùng tên trong file Excel (case-insensitive)
+          const normalizedName = category.name.toLowerCase().trim();
+          if (seenNames.has(normalizedName)) {
+            continue; // Bỏ qua nếu trùng trong file
+          }
+          seenNames.add(normalizedName);
+
+          categoriesData.push(category);
+        }
+
+        // 5. Lấy danh sách tên danh mục đã tồn tại trong database
+        const existingCategories = await Category.find({ 
+          name: { $in: categoriesData.map(c => c.name) } 
+        }).select('name').lean();
+        
+        const existingNames = new Set(
+          existingCategories.map(c => c.name.toLowerCase().trim())
+        );
+
+        // 6. Lọc bỏ các danh mục đã tồn tại trong database
+        const newCategories = categoriesData.filter(c => 
+          !existingNames.has(c.name.toLowerCase().trim())
+        );
+
+        if (newCategories.length === 0) {
+          return {
+            success: true,
+            created: 0,
+            total: categoriesData.length,
+            skipped: categoriesData.length,
+            message: 'Tất cả danh mục đã tồn tại trong database'
+          };
+        }
+
+        // 7. Thực hiện tạo hàng loạt trong Database
+        const createdCategories = await CategoriesRepository.bulkCreate(newCategories);
+        await this._invalidateCategoryCache();
+        
+        return {
+          success: true,
+          created: createdCategories.length,
+          total: categoriesData.length,
+          skipped: categoriesData.length - createdCategories.length,
+          data: createdCategories,
+          message: `Đã thêm ${createdCategories.length} danh mục, bỏ qua ${categoriesData.length - createdCategories.length} danh mục trùng`
+        };
+      } catch (error) {
+        if (error.status) throw error;
+        
+        const err = new Error('Lỗi khi đọc file Excel: ' + error.message);
+        err.status = 400;
+        throw err;
+      }
+    }
 }
 
 module.exports = new CategoriesService();

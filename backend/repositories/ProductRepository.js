@@ -131,6 +131,11 @@ class ProductRepository {
     return await Product.findByIdAndDelete(id)
   }
 
+  // Bulk create products
+  async bulkCreate(dataArray) {
+    return await Product.insertMany(dataArray, { ordered: false });
+  }
+
   /**
    * @function search
    * @description Performs advanced search and filtering on products, supporting keywords, price range, categories, tech specs, sorting, and pagination.

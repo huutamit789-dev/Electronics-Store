@@ -1,5 +1,37 @@
 const ProductService = require('../services/ProductService')
 const { asyncHandler } = require('../middleware/asyncHandler')
+const multer = require('multer')
+const path = require('path')
+const fs = require('fs')
+
+// Configure multer for file upload
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const uploadDir = path.join(__dirname, '../uploads')
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true })
+    }
+    cb(null, uploadDir)
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+    cb(null, 'products-' + uniqueSuffix + path.extname(file.originalname))
+  }
+})
+
+const upload = multer({
+  storage: storage,
+  fileFilter: function (req, file, cb) {
+    const allowedTypes = ['.xlsx', '.xls']
+    const ext = path.extname(file.originalname).toLowerCase()
+    if (allowedTypes.includes(ext)) {
+      cb(null, true)
+    } else {
+      cb(new Error('Chỉ chấp nhận file Excel (.xlsx, .xls)'))
+    }
+  },
+  limits: { fileSize: 5 * 1024 * 1024 } // 5MB limit
+})
 
 /**
  * @desc Get all products (Public)
@@ -86,6 +118,27 @@ const searchProducts = asyncHandler(async (req, res) => {
   res.success(result, 'Products search completed successfully');
 });
 
+/**
+ * @desc Bulk create products from Excel file.
+ * @route POST /Products/bulk/excel
+ * @access Admin
+ */
+const bulkCreateProductsFromExcel = asyncHandler(async (req, res) => {
+  const currentUser = req.user;
+  
+  if (!req.file) {
+    return res.error('Không có file được tải lên', 400);
+  }
+
+  const filePath = req.file.path;
+  const result = await ProductService.bulkCreateProductsFromExcel(currentUser, filePath);
+
+  // Delete the uploaded file after processing
+  fs.unlinkSync(filePath);
+
+  res.success(result, 'Products bulk created from Excel successfully', 201);
+});
+
 module.exports = { 
   getProducts, 
   getProductById, 
@@ -94,5 +147,6 @@ module.exports = {
   deleteProduct, 
   getAllProducts, 
   getProductByCategoryId,
-  searchProducts
+  searchProducts,
+  bulkCreateProductsFromExcel
 }

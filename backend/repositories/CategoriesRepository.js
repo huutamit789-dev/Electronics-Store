@@ -37,6 +37,10 @@ class CategoryRepository {
   async delete(id) {
     return await Category.findByIdAndDelete(id);
   }
+
+  async bulkCreate(dataArray) {
+    return await Category.insertMany(dataArray, { ordered: false });
+  }
 }
 
 module.exports = new CategoryRepository();
