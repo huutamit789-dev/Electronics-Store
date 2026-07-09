@@ -6,6 +6,7 @@ const Payment = require('./PaymentSchema');
 const Review = require('./ReviewSchema');
 const Common = require('./CommonSchema');
 const Categories = require('./CategoriesSchema');
+const Footer = require('./FooterSchema');
 module.exports = {
   ...User,
   ...Product,
@@ -14,5 +15,6 @@ module.exports = {
   ...Payment,
   ...Review,
   ...Common,
-  ...Categories
+  ...Categories,
+  ...Footer
 };
