@@ -36,7 +36,7 @@ const app = express();
 // --- Middleware Configuration ---
 
 app.use(cors({
-  origin: '*', // Temporary: allow all origins for debugging
+  origin: ['https://electronics-store-front-end.vercel.app', 'http://localhost:5173', 'http://localhost:8091'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
