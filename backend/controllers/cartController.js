@@ -19,7 +19,16 @@ const getCart = asyncHandler(async (req, res) => {
  */
 const addToCart = asyncHandler(async (req, res) => {
   const { user_id, product_id, quantity, price } = req.body
+  console.log('\n🛒 ADD TO CART');
+  console.log(`👤 User ID: ${user_id}`);
+  console.log(`📦 Product ID: ${product_id}`);
+  console.log(`🔢 Quantity: ${quantity}`);
+  console.log(`💰 Price: ${price}`);
+  console.log(`🕐 Time: ${new Date().toISOString()}`);
+  
   const cart = await CartService.addToCart(user_id, product_id, quantity, price)
+  
+  console.log(`✅ ITEM ADDED TO CART SUCCESSFULLY`);
   res.success(cart, 'Item added to cart successfully')
 })
 

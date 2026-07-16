@@ -39,7 +39,15 @@ const getOrdersByUserId = asyncHandler(async (req, res) => {
  * @access Public
  */
 const createOrder = asyncHandler(async (req, res) => {
+  console.log('\n🛒 NEW ORDER CREATED');
+  console.log(`👤 User ID: ${req.body.user_id}`);
+  console.log(`📦 Items: ${req.body.items?.length || 0} products`);
+  console.log(`💰 Total: ${req.body.total_price}`);
+  console.log(`🕐 Time: ${new Date().toISOString()}`);
+  
   const newOrder = await OrderService.createOrder(req.body)
+  
+  console.log(`✅ ORDER CREATED SUCCESSFULLY: ${newOrder._id}`);
   res.success(newOrder, 'Order created successfully', 201)
 })
 

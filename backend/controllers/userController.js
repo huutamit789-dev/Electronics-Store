@@ -34,7 +34,19 @@ const loginUser = asyncHandler(async (req, res) => {
     return res.status(400).json({ success: false, message: "Vui lòng nhập Username và Password" });
   }
 
+  console.log('\n🔐 USER LOGIN ATTEMPT');
+  console.log(`👤 Username: ${username}`);
+  console.log(`🌐 IP: ${req.ip}`);
+  console.log(`🕐 Time: ${new Date().toISOString()}`);
+
   const result = await UserService.verifyPassword(username, password);
+  
+  if (result.success) {
+    console.log(`✅ LOGIN SUCCESSFUL: ${username}`);
+  } else {
+    console.log(`❌ LOGIN FAILED: ${username}`);
+  }
+  
   res.success(result, 'Login successful');
 });
 /**
