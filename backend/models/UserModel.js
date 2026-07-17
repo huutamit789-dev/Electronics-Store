@@ -18,6 +18,15 @@ const userSchema = new mongoose.Schema({
     default: 'attempt' 
   },
   
+  // Tài khoản người dùng
+  balance: { type: Number, default: 0, min: 0 }, // Số dư tài khoản
+  total_spent: { type: Number, default: 0, min: 0 }, // Tổng số tiền đã chi tiêu
+  vip_level: { 
+    type: String, 
+    enum: ['bronze', 'silver', 'gold', 'platinum', 'diamond'], 
+    default: 'bronze' 
+  }, // Hạng VIP
+  
   createdAt: { type: Date, default: Date.now }
 });
 

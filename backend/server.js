@@ -22,6 +22,7 @@ const footerRoutes = require('./routes/FooterRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const couponRoutes = require('./routes/couponRoutes');
 const componentRoutes = require('./routes/ComponentRoutes');
+const transactionRoutes = require('./routes/transactionRoutes');
 
 // Middleware Imports
 const { responseHandler } = require('./middleware/responseHandler');
@@ -36,7 +37,7 @@ const app = express();
 // --- Middleware Configuration ---
 
 app.use(cors({
-  origin: [/\.vercel\.app$/, 'http://localhost:5173', 'http://localhost:8091'],
+  origin: [/\.vercel\.app$/, 'http://localhost:5173', 'http://localhost:5174', 'http://localhost:8091'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -82,6 +83,7 @@ app.use('/api/footers', footerRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/coupons', couponRoutes);
 app.use('/api/components', componentRoutes);
+app.use('/api/transactions', transactionRoutes);
 
 // --- Error Handling ---
 

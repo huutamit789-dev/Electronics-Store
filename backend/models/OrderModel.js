@@ -16,7 +16,12 @@ const orderSchema = new mongoose.Schema({
   momo_order_id: { type: String }, // Lưu orderId từ MoMo để tìm lại sau
   coupon_code: { type: String, default: null }, // Mã giảm giá được sử dụng
   discount_amount: { type: Number, default: 0 }, // Số tiền được giảm giá
-  original_price: { type: Number, default: 0 } // Giá trị gốc của đơn hàng trước giảm giá
+  original_price: { type: Number, default: 0 }, // Giá trị gốc của đơn hàng trước giảm giá
+  payment_method: { 
+    type: String, 
+    enum: ['momo', 'balance', 'cod'], 
+    default: 'momo' 
+  } // Phương thức thanh toán
 });
 
 module.exports = mongoose.model('Order', orderSchema);

@@ -2,6 +2,7 @@ const OrderRepository = require('../repositories/OrderRepository');
 const User = require('../models/UserModel');
 const Order = require('../models/OrderModel');
 const emailService = require('../services/emailService');
+const TransactionService = require('../services/TransactionService');
 
 const VALID_STATUSES = ['pending', 'completed', 'cancelled'];
 
@@ -34,7 +35,7 @@ class OrderService {
    * @returns {Promise<Object>} Created order details.
    */
   async createOrder(orderData) {
-    const { user_id, items, total_price, coupon_code } = orderData;
+    const { user_id, items, total_price, coupon_code, payment_method } = orderData;
 
     // Validation
     if (!user_id || !items || !total_price) throw new Error('Thông tin đơn hàng không đầy đủ');
@@ -95,6 +96,23 @@ class OrderService {
     };
 
     const created = await OrderRepository.create(finalOrderData);
+    
+    // Nếu thanh toán bằng tài khoản, trừ tiền và cập nhật VIP
+    if (payment_method === 'balance') {
+      try {
+        await TransactionService.deductForPurchase(
+          user_id, 
+          finalPrice, 
+          created._id, 
+          `Thanh toán đơn hàng #${created._id}`
+        );
+      } catch (error) {
+        // Nếu trừ tiền thất bại, hủy đơn hàng
+        await OrderRepository.delete(created._id);
+        throw error;
+      }
+    }
+    
     // Populate user email for notification
     const populated = await Order.findById(created._id).populate('user_id', 'email');
     // Send emails to customer and admin
@@ -109,6 +127,22 @@ class OrderService {
     if (!id || !status) throw new Error('Thiếu thông tin cập nhật');
     if (!VALID_STATUSES.includes(status)) {
       throw new Error(`Status không hợp lệ. Chỉ chấp nhận: ${VALID_STATUSES.join(', ')}`);
+    }
+
+    const order = await Order.findById(id);
+    if (!order) throw new Error('Không tìm thấy đơn hàng để cập nhật');
+
+    // Nếu hủy đơn hàng và đơn hàng đã thanh toán bằng balance, hoàn tiền
+    if (status === 'cancelled' && order.status !== 'cancelled') {
+      const user = await User.findById(order.user_id);
+      if (user && order.payment_method === 'balance') {
+        await TransactionService.refundMoney(
+          order.user_id,
+          order.total_price,
+          order._id,
+          `Hoàn tiền đơn hàng #${order._id}`
+        );
+      }
     }
 
     const updated = await OrderRepository.updateStatus(id, status);
