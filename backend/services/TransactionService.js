@@ -1,5 +1,7 @@
 const Transaction = require('../models/TransactionModel');
 const User = require('../models/UserModel');
+const Payment = require('../models/PaymentModel');
+const OrderHistoryService = require('../services/OrderHistoryService');
 
 // Cấu hình VIP levels dựa trên tổng chi tiêu
 const VIP_LEVELS = {
@@ -177,18 +179,43 @@ const deductForPurchase = async (userId, amount, orderId, description = 'Thanh t
     order_id: orderId
   });
 
+  // Tạo Payment record cho admin/payments
+  const payment = new Payment({
+    order_id: orderId,
+    user_id: userId,
+    payment_method: 'balance',
+    payment_status: 'paid',
+    transaction_id: transaction._id.toString(),
+    amount: amount,
+    paid_at: new Date()
+  });
+
   // Cập nhật số dư và tổng chi tiêu
   user.balance = balanceAfter;
   user.total_spent += amount;
-  
+
   // Tính và cập nhật VIP level
   const newVipLevel = calculateVipLevel(user.total_spent);
   user.vip_level = newVipLevel;
-  
+
   await Promise.all([
     transaction.save(),
+    payment.save(),
     user.save()
   ]);
+
+  // Tạo OrderHistory record cho admin/order-history
+  try {
+    await OrderHistoryService.createOrderHistory({
+      order_id: orderId,
+      old_status: 'pending',
+      new_status: 'completed',
+      note: `Thanh toán bằng tài khoản thành công. Số tiền: ${amount.toLocaleString()}đ`
+    });
+  } catch (error) {
+    console.error('Error creating order history:', error);
+    // Không throw error vì payment đã thành công
+  }
 
   return {
     transaction_id: transaction._id,

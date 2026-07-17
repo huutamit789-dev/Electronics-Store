@@ -11,8 +11,15 @@ class OrderHistoryRepository {
 
     const [history, total] = await Promise.all([
       OrderHistory.find()
-        .populate('order_id')
-        .sort({ createdAt: -1 }) 
+        .populate({
+          path: 'order_id',
+          populate: {
+            path: 'user_id',
+            select: 'username email'
+          },
+          select: 'total_price status created_at'
+        })
+        .sort({ changed_at: -1 })
         .skip(skip)
         .limit(limitNum)
         .lean(),

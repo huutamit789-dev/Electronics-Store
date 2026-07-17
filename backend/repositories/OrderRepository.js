@@ -56,6 +56,11 @@ class OrderRepository {
   async updateStatus(id, status) {
     return await Order.findByIdAndUpdate(id, { status }, { new: true })
   }
+
+  // Delete order
+  async delete(id) {
+    return await Order.findByIdAndDelete(id)
+  }
 }
 
 module.exports = new OrderRepository()

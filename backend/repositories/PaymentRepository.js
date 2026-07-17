@@ -11,8 +11,9 @@ class PaymentRepository {
 
     const [payments, total] = await Promise.all([
       Payment.find()
-        .populate('order_id') // Thường cần populate để biết thanh toán thuộc đơn nào
-        .sort({ createdAt: -1 })
+        .populate('order_id', 'total_price status created_at')
+        .populate('user_id', 'username email')
+        .sort({ created_at: -1 })
         .skip(skip)
         .limit(limitNum)
         .lean(),
